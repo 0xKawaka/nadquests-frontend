@@ -1,8 +1,6 @@
-
 .quests-page {
   color: #ffffff;
   background: linear-gradient(135deg, #6f3ff5, rgba(131, 110, 249, 1));
-  min-height: 100vh;
   padding: 5vh 5vw;
   display: flex;
   flex-direction: column;
