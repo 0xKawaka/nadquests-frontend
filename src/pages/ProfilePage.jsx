@@ -1,6 +1,7 @@
 // ProfilePage.js
 import React from 'react';
 import { usePrivy } from '@privy-io/react-auth';
+import './ProfilePage.css'; // Importez le fichier CSS
 
 const ProfilePage = () => {
   const { user } = usePrivy();
