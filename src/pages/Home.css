@@ -12,10 +12,10 @@
   padding: 60px 20px;
   width: 100%;
   max-width: 1200px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 15px;
   margin: 40px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s ease;
 }
 
@@ -67,7 +67,7 @@
   width: 80%;
   max-width: 400px;
   border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.45);
 }
 
 /* Features Section */
@@ -82,7 +82,7 @@
 }
 
 .feature {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   padding: 20px;
   margin: 10px;
@@ -94,7 +94,7 @@
 
 .feature:hover {
   transform: translateY(-5px);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .feature h2 {

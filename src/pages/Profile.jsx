@@ -17,7 +17,7 @@ const ProfilePage = () => {
     <div className="profile-page">
       {user &&
         <div className="profile-container">
-          <h1>Profile</h1>
+          <div className='page-title'>Profile</div>
           <div className="profile-info">
             <h2>User Information</h2>
             <p>Email: {user.email}</p>

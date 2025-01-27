@@ -1,5 +1,9 @@
 .page-title {
-  font-size: 2vw;
-  margin-bottom: 2vh;
-  color: #FBFAF9; /* Monad Off-White */
+  font-size: 3em;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
 }

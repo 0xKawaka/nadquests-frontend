@@ -16,7 +16,13 @@ body {
   background: #0E100F; /* Monad Black */
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #6f3ff5, rgba(131, 110, 249, 1));
+  /* background: linear-gradient(135deg, #6f3ff5, rgba(131, 110, 249, 1)); */
+  background: 
+  linear-gradient(
+    rgba(111, 63, 245, 0.8), 
+    rgba(131, 110, 249, 0.8)
+  ), 
+  url('./images/background.jpeg') center/cover no-repeat;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,7 +53,6 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: 'Inter', sans-serif;
   background-color: #836EF9; /* Monad Purple */
   color: #FBFAF9; /* Monad Off-White */
   cursor: pointer;
