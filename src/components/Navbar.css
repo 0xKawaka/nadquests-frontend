@@ -1,0 +1,51 @@
+/* App.css */
+.navbar {
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(131, 110, 249, 1); /* Light purple */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: rgba(160, 5, 93, 1); /* Pink */
+}
+
+.navbar-links {
+  display: flex;
+  background: rgba(32, 0, 82, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.navbar-item {
+  font-size: 18px;
+  color: rgba(131, 110, 249, 1); /* Light purple */
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: rgba(160, 5, 93, 1); /* Pink */
+  transform: translateY(-2px);
+}
+
+/* Add some padding to the body to account for the fixed navbar */
+body {
+  padding-top: 70px;
+}
