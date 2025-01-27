@@ -1,17 +1,14 @@
 {
   "Beginner's Journey": [
-    "Complete the tutorial",
-    "Earn 100 points",
-    "Share your progress on social media"
+    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Advanced Challenges": [
-    "Defeat the final boss",
-    "Collect all hidden items",
-    "Complete the game in under 10 hours"
+    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Holiday Special": [
-    "Decorate your profile",
-    "Send a gift to a friend",
-    "Participate in the holiday event"
+    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Quiz", "description": "Answer the quiz"}
   ]
 }

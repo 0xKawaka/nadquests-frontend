@@ -1,0 +1,77 @@
+/* src/pages/QuestTasksPage.css */
+
+.quest-tasks-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.quest-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.quest-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.quest-info h1 {
+  margin: 0 0 10px 0;
+}
+
+.quest-info p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.quest-tasks h2 {
+  margin-bottom: 15px;
+}
+
+.quest-tasks ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.task-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.task-button:hover {
+  background-color: #218838;
+}
+
+.task-item p {
+  margin: 0;
+  font-size: 1em;
+}
