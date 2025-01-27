@@ -8,6 +8,7 @@ import { mainnet } from 'viem/chains';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProfilePage from './pages/ProfilePage';
+import QuestsPage from './pages/QuestsPage';
 
 const config = createConfig({
   chains: [mainnet],
@@ -38,6 +39,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<div>Welcome to the Main Page</div>} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/quests" element={<QuestsPage  />} />
               </Routes>
             </div>
           </Router>
