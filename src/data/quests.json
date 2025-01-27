@@ -3,21 +3,18 @@
     "title": "Beginner's Journey",
     "isLive": true,
     "startDate": null,
-    "endDate": null,
-    "image": "/images/beginner.jpg"
+    "endDate": null
   },
   {
     "title": "Advanced Challenges",
     "isLive": true,
     "startDate": "2025-01-10T09:00:00",
-    "endDate": "2025-01-30T23:59:59",
-    "image": "/images/advanced.jpg"
+    "endDate": "2025-01-30T23:59:59"
   },
   {
     "title": "Holiday Special",
     "isLive": true,
     "startDate": "2025-01-10T00:00:00",
-    "endDate": "2025-02-10T23:59:59",
-    "image": "/images/holiday.jpg"
+    "endDate": "2025-02-10T23:59:59"
   }
 ]

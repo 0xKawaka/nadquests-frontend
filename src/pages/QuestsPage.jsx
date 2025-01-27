@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
+import { questsImages } from '../images/quests/questsImages';
 import './QuestsPage.css';
 
 const QuestsPage = () => {
@@ -19,7 +20,36 @@ const QuestsPage = () => {
     } else if (end) {
       return now <= end;
     } else {
-      return true; // If no dates are provided, the quest is always live
+      return true;
+    }
+  };
+
+  const getTimeLeft = (endDate) => {
+    if (!endDate) {
+      return '';
+    }
+
+    const now = new Date();
+    const end = new Date(endDate);
+    const diff = end - now;
+
+    if (diff <= 0) {
+      return 'Ended';
+    }
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    if (days > 0) {
+      return `${days} day${days !== 1 ? 's' : ''} left`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours !== 1 ? 's' : ''} left`;
+    } else if (minutes > 0) {
+      return `${minutes} minute${minutes !== 1 ? 's' : ''} left`;
+    } else {
+      return `${seconds} second${seconds !== 1 ? 's' : ''} left`;
     }
   };
 
@@ -27,38 +57,31 @@ const QuestsPage = () => {
     navigate(`/quest/${encodeURIComponent(title)}`);
   };
 
+  const liveQuests = quests.filter((quest) => isQuestLive(quest.startDate, quest.endDate));
+
   return (
     <div className="quests-page">
       <h1>Quests</h1>
-      <ul className="quests-list">
-        {quests.map((quest) => {
-          const isLive = isQuestLive(quest.startDate, quest.endDate);
+      <div className="quests-list">
+        {liveQuests.map((quest) => {
+          const timeLeft = getTimeLeft(quest.endDate);
           return (
-            <li
+            <div
               key={quest.title}
-              className={`quest-item ${isLive ? 'live' : 'not-live'}`}
+              className="quest-item live"
               onClick={() => handleQuestClick(quest.title)}
             >
               <div className="quest-image">
-                <img src={quest.image} alt={quest.title} />
+                <img src={questsImages[quest.title]} alt={quest.title} />
               </div>
               <div className="quest-details">
                 <h2>{quest.title}</h2>
-                <p>
-                  {isLive ? 'Live Now' : 'Coming Soon'} |{' '}
-                  {quest.startDate
-                    ? `Starts: ${new Date(quest.startDate).toLocaleString()}`
-                    : 'No start date'}{' '}
-                  |{' '}
-                  {quest.endDate
-                    ? `Ends: ${new Date(quest.endDate).toLocaleString()}`
-                    : 'No end date'}
-                </p>
+                <p>{timeLeft}</p>
               </div>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };
