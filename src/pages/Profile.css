@@ -3,14 +3,13 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #0E100F; /* Monad Black */
     padding: 20px;
     font-family: 'Inter', sans-serif;
     color: #FBFAF9; /* Monad Off-White */
 }
 
 .profile-container {
-    background: rgba(32, 0, 82, 0.8); /* Monad Blue avec transparence */
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 30px;

@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import ProfilePage from './pages/Profile';
 import QuestsList from './pages/QuestsList';
 import QuestTasks from './pages/QuestTasks';
+import Home from './pages/Home';
 
 const config = createConfig({
   chains: [mainnet],
@@ -38,7 +39,7 @@ export default function App() {
             <Navbar />
             <div className="App">
               <Routes>
-                <Route path="/" element={<div>Welcome to the Main Page</div>} />
+                <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/quests" element={<QuestsList  />} />
                 <Route path="/quest/:title" element={<QuestTasks />} />

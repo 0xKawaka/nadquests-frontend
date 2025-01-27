@@ -15,7 +15,7 @@ const QuestsList = () => {
 
   return (
     <div className="quests-page">
-      <h1>Quests</h1>
+      <div className='page-title'>Quests</div>
       <div className="quests-list">
         {liveQuests.map((quest) => {
           const timeLeft = getTimeLeft(quest.endDate);
@@ -29,8 +29,8 @@ const QuestsList = () => {
                 <img src={questsImages[quest.title]} alt={quest.title} />
               </div>
               <div className="quest-details">
-                <h2>{quest.title}</h2>
-                <p>{timeLeft + ' left'}</p>
+                <div className='quests-list-quest-title'>{quest.title}</div>
+                <div>{timeLeft && timeLeft + ' left'}</div>
               </div>
             </div>
           );

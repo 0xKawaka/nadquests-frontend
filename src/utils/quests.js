@@ -16,7 +16,7 @@ const isQuestLive = (startDate, endDate) => {
 
 const getTimeLeft = (endDate) => {
   if (!endDate) {
-    return '';
+    return null;
   }
 
   const now = new Date();
