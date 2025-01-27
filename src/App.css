@@ -1,38 +1,3 @@
-/* Styles pour les formulaires */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background: rgba(32, 0, 82, 0.8); /* Monad Blue avec transparence */
-  border-radius: 15px;
-  border: 1px solid #836EF9; /* Monad Purple */
-}
-
-input, textarea, select {
-  background-color: rgba(251, 250, 249, 0.1); /* Monad Off-White avec transparence */
-  border: 1px solid #836EF9; /* Monad Purple */
-  border-radius: 8px;
-  padding: 10px;
-  color: #FBFAF9; /* Monad Off-White */
-  font-size: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: #A0055D; /* Monad Berry */
-  background-color: rgba(251, 250, 249, 0.2); /* Monad Off-White avec transparence */
-  outline: none;
-}
-
-label {
-  color: #FBFAF9; /* Monad Off-White */
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
 .page-title {
   font-size: 2vw;
   margin-bottom: 2vh;
