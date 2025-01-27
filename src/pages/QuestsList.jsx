@@ -2,12 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
 import { questsImages } from '../images/quests/questsImages';
-import './QuestsPage.css';
+import './QuestsList.css';
 
 const QuestsPage = () => {
   const navigate = useNavigate();
 
-  // Function to check if a quest is live based on the current date
   const isQuestLive = (startDate, endDate) => {
     const now = new Date();
     const start = startDate ? new Date(startDate) : null;

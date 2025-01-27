@@ -7,8 +7,8 @@ import { http } from 'viem';
 import { mainnet } from 'viem/chains';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import ProfilePage from './pages/ProfilePage';
-import QuestsPage from './pages/QuestsPage';
+import ProfilePage from './pages/Profile';
+import QuestsPage from './pages/QuestsList';
 
 const config = createConfig({
   chains: [mainnet],
