@@ -1,109 +1,87 @@
-/* ProfilePage.css */
 .profile-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: #0E100F; /* Monad Black */
     padding: 20px;
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-  }
-  
-  .profile-container {
-    background: rgba(255, 255, 255, 0.1);
+    font-family: 'Inter', sans-serif;
+    color: #FBFAF9; /* Monad Off-White */
+}
+
+.profile-container {
+    background: rgba(32, 0, 82, 0.8); /* Monad Blue avec transparence */
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 30px;
     width: 100%;
     max-width: 800px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .profile-container h1 {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid #836EF9; /* Monad Purple */
+    animation: fadeIn 1s ease-out;
+}
+
+.profile-container h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     text-align: center;
-    color: #fff;
+    color: #FBFAF9; /* Monad Off-White */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .profile-info {
-    margin-bottom: 30px;
-  }
-  
-  .profile-info h2 {
+}
+
+.profile-info h2,
+.collected-items h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  }
-  
-  .profile-info p {
+    color: #FBFAF9; /* Monad Off-White */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.profile-info p {
     font-size: 1.2rem;
     margin: 10px 0;
-    color: #e0e0e0;
-  }
-  
-  .collected-items {
-    margin-top: 20px;
-  }
-  
-  .collected-items h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  }
-  
-  .collected-items ul {
-    list-style-type: none;
+    color: #FBFAF9; /* Monad Off-White */
+}
+
+.collected-items ul {
+    list-style-type: none; /* Supprime les puces des listes */
     padding: 0;
-  }
-  
-  .collected-items li {
-    background: rgba(255, 255, 255, 0.1);
+    margin: 0;
+}
+
+.collected-items li {
+    background-color: rgba(131, 110, 249, 0.1); /* Monad Purple avec transparence */
+    border: 1px solid #836EF9; /* Monad Purple */
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 10px;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-  
-  .collected-items li:hover {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.collected-items li:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .collected-items li h3 {
+    background-color: rgba(160, 5, 93, 0.2); /* Monad Berry avec transparence */
+}
+
+.collected-items li h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    color: #fff;
-  }
-  
-  .collected-items li p {
+    color: #FBFAF9; /* Monad Off-White */
+}
+
+.collected-items li p {
     font-size: 1rem;
-    color: #e0e0e0;
-  }
-  
-  .collected-items p {
-    font-size: 1.2rem;
-    color: #e0e0e0;
-    text-align: center;
-  }
-  
-  /* Animation for the profile container */
-  @keyframes fadeIn {
+    color: #FBFAF9; /* Monad Off-White */
+}
+
+/* Animation pour la page */
+@keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  .profile-container {
-    animation: fadeIn 1s ease-out;
-  }
+}

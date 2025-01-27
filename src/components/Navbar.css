@@ -1,15 +1,14 @@
-/* Navbar.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: #200052; /* Monad Blue */
   padding: 15px 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .navbar-links {
@@ -18,49 +17,48 @@
 }
 
 .navbar-item {
-  color: #fff;
+  color: #FBFAF9; /* Monad Off-White */
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   padding: 10px 15px;
   border-radius: 8px;
   transition: all 0.3s ease;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-item:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(160, 5, 93, 0.5); /* Monad Berry avec transparence */
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-item:active {
   transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Style pour le bouton de connexion (ajustez selon votre composant LoginButton) */
 .login-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+  background: #836EF9; /* Monad Purple */
+  border: 2px solid #836EF9; /* Monad Purple */
+  color: #FBFAF9; /* Monad Off-White */
   font-size: 1rem;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .login-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: #A0055D; /* Monad Berry */
+  border-color: #A0055D; /* Monad Berry */
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .login-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
