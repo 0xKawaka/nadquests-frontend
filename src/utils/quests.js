@@ -37,7 +37,7 @@ const getTimeLeft = (endDate) => {
   if (hours > 0) timeComponents.push(`${hours} hour${hours !== 1 ? 's' : ''}`);
   if (minutes > 0) timeComponents.push(`${minutes} minute${minutes !== 1 ? 's' : ''}`);
   // if (seconds > 0) timeComponents.push(`${seconds} second${seconds !== 1 ? 's' : ''}`);
-  return `${timeComponents.join(' ')} left`;
+  return `${timeComponents.join(' ')}`;
 };
 
 export { isQuestLive, getTimeLeft };

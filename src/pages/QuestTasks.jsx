@@ -23,7 +23,7 @@ const QuestTasks = () => {
     return (
       <div className="quest-tasks-page">
         <h1>Quest Not Found</h1>
-        <p>The quest you are looking for does not exist.</p>
+        <div>The quest you are looking for does not exist.</div>
         <button onClick={() => navigate('/quests')}>Back to Quests</button>
       </div>
     );
@@ -53,25 +53,28 @@ const QuestTasks = () => {
         </div>
         <div className="quest-info">
           <h1>{quest.title}</h1>
-          <p>Status: {liveStatus ? 'Live Now' : 'Not Live'}</p>
-          {endDate && <p>Time Left: {timeLeft}</p>}
+          <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
+          {endDate && <div>Time Left: {timeLeft}</div>}
         </div>
       </div>
       <div className="quest-tasks">
         <h2>Tasks</h2>
-        <ul>
+        <div className='quest-task-container'>
           {questTasks.map((task, index) => (
-            <li key={index} className="task-item">
+            <div key={index} className="task-item">
+              <div className="task-index-and-description">
+                <div className='task-index'>{index}</div>
+                <div>{task.description}</div>
+              </div>
               <button
                 className="task-button"
                 onClick={() => handleTaskClick(task.button)}
               >
                 {task.button}
               </button>
-              <p>{task.description}</p>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

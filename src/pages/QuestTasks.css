@@ -7,7 +7,7 @@
 }
 
 .back-button {
-  background-color: #007bff;
+  background-color: #6f3ff5;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -17,7 +17,7 @@
 }
 
 .back-button:hover {
-  background-color: #0056b3;
+  background-color: #5a2dcd;
 }
 
 .quest-header {
@@ -46,29 +46,44 @@
   margin-bottom: 15px;
 }
 
-.quest-tasks ul {
-  list-style-type: none;
-  padding: 0;
+.quest-task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 .task-item {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  justify-content: space-between;
+  border: 0.1vw solid #ddd;
+  border-radius: 0.2vw;
+  padding: 1.5vh 1vw;
+}
+
+.task-index-and-description {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .task-button {
-  background-color: #28a745;
+  background-color: #6f3ff5;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 1vh 1.5vw;
   cursor: pointer;
-  margin-right: 15px;
-  border-radius: 4px;
+  border-radius: 0.2vw;
+}
+
+.task-index {
+  border: 0.1vw solid #b1b1b1;
+  padding: 0.7vh 0.7vw;
+  border-radius: 0.3vw;
 }
 
 .task-button:hover {
-  background-color: #218838;
+  background-color: #5a2dcd;
 }
 
 .task-item p {

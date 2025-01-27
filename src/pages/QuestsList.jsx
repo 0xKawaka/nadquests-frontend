@@ -30,7 +30,7 @@ const QuestsList = () => {
               </div>
               <div className="quest-details">
                 <h2>{quest.title}</h2>
-                <p>{timeLeft}</p>
+                <p>{timeLeft + ' left'}</p>
               </div>
             </div>
           );
