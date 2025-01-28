@@ -1,19 +1,16 @@
 {
   "Beginner's Journey": [
     { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
-    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
     { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Advanced Challenges": [
     { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
-    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
     { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Holiday Special": [
     { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
-    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
     { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ]
