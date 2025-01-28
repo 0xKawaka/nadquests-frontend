@@ -1,14 +1,20 @@
 {
   "Beginner's Journey": [
-    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
+    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
+    { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Advanced Challenges": [
-    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
+    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
+    { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ],
   "Holiday Special": [
-    { "button": "Visit", "description": "Complete the tutorial"},
+    { "button": "Follow", "description": "Follow Monad", "link":"https://x.com/monad_xyz"},
+    { "button": "Follow", "description": "Follow Monad Ecosystem", "link":"https://x.com/monad_eco"},
+    { "button": "Explore", "description": "Explore Monad", "link":"https://www.monad.xyz/technology"},
     { "button": "Quiz", "description": "Answer the quiz"}
   ]
 }

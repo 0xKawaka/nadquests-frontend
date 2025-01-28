@@ -1,6 +1,6 @@
 // src/pages/QuestTasksPage.jsx
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
 import tasks from '../data/tasks.json';
@@ -9,7 +9,6 @@ import { questsImages } from '../images/quests/questsImages'; // Ensure this exp
 import { isQuestLive, getTimeLeft } from '../utils/quests';
 import { usePrivy } from '@privy-io/react-auth';
 import ConnectButton from '../components/ConnectButton';
-
 
 const QuestTasks = () => {
   const { user } = usePrivy();
@@ -22,10 +21,14 @@ const QuestTasks = () => {
 
   if (!quest) {
     return (
-      <div className="quest-tasks-page">
-        <h1>Quest Not Found</h1>
-        <div>The quest you are looking for does not exist.</div>
-        <button onClick={() => navigate('/quests')}>Back to Quests</button>
+      <div className="quest-tasks-page-container">
+        <div className="quest-tasks-page">
+          <h1>Quest Not Found</h1>
+          <div>The quest you are looking for does not exist.</div>
+          <button className="back-button" onClick={() => navigate('/quests')}>
+            Back to Quests
+          </button>
+        </div>
       </div>
     );
   }
@@ -35,6 +38,20 @@ const QuestTasks = () => {
   const timeLeft = getTimeLeft(endDate);
 
   const questTasks = tasks[quest.title] || [];
+
+  const [completedTasks, setCompletedTasks] = useState({});
+
+  // Handler for task button clicks
+  const handleTaskClick = (buttonType, taskId) => {
+    
+
+    if (buttonType.toLowerCase() === 'explore') {
+      setCompletedTasks((prev) => ({ ...prev, [taskId]: true }));
+    } else if (buttonType.toLowerCase() === 'quiz') {
+    } else if (buttonType.toLowerCase() === 'visit') {
+    }
+    // Add more conditions as needed for other task types
+  };
 
   return (
     <div className="quest-tasks-page-container">
@@ -59,45 +76,45 @@ const QuestTasks = () => {
             {endDate && <div>Time Left: {timeLeft}</div>}
           </div>
         </div>
-        {user && 
-        <div className="quest-tasks">
-          <div className='quest-task-container'>
-            {questTasks.map((task, index) => (
-              <div key={index} className="task-item">
-                <div className="task-index-and-description">
-                  <div className='task-index'>{index}</div>
-                  <div>{task.description}</div>
+        {user ? (
+          <div className="quest-tasks">
+            <div className="quest-task-container">
+              {questTasks.map((task, index) => (
+                <div key={"task"+index} className="task-item">
+                  <div className="task-index-and-description">
+                    {completedTasks[index] ? (
+                      <>
+                      <div className="task-checkmark">&#10003;</div>
+                      <div className="task-description task-description-complete">{task.description}</div>
+                      </>
+                    ) : (
+                      <>
+                      <div className="task-index">{index + 1}</div>
+                      <div className="task-description">{task.description}</div>
+                      </>
+                    )}
+                    
+                  </div>
+                  <a href={task.link} target="_blank" rel="noreferrer">
+                    <button
+                      className="task-button"
+                      onClick={() => handleTaskClick(task.button, index)}
+                    >
+                      {task.button}
+                    </button>
+                  </a>
                 </div>
-                <button
-                  className="task-button"
-                  onClick={() => handleTaskClick(task.button)}
-                >
-                  {task.button}
-                </button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>  
-        }
-        {!user &&
-          <div className='profile-info-no-user'>
-            <ConnectButton className={"big-connect-button"} />
+        ) : (
+          <div className="profile-info-no-user">
+            <ConnectButton className="big-connect-button" />
           </div>
-        }
+        )}
       </div>
     </div>
   );
-
-  // Handler for task button clicks
-  function handleTaskClick(buttonType) {
-    // Implement navigation or functionality based on button type
-    // For example:
-    if (buttonType.toLowerCase() === 'visit') {
-      navigate(`/quest/${encodeURIComponent(quest.title)}/visit`);
-    } else if (buttonType.toLowerCase() === 'quiz') {
-      navigate(`/quest/${encodeURIComponent(quest.title)}/quiz`);
-    }
-  }
 };
 
 export default QuestTasks;
