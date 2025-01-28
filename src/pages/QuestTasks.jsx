@@ -7,18 +7,19 @@ import tasks from '../data/tasks.json';
 import './QuestTasks.css';
 import { questsImages } from '../images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
 import { isQuestLive, getTimeLeft } from '../utils/quests';
+import { usePrivy } from '@privy-io/react-auth';
+import ConnectButton from '../components/ConnectButton';
 
 
 const QuestTasks = () => {
+  const { user } = usePrivy();
   const { title } = useParams(); // Assumes the route is defined with :title
   const navigate = useNavigate();
 
-  // Find the quest based on the title from the URL
   const quest = quests.find(
     (q) => q.title.toLowerCase() === decodeURIComponent(title).toLowerCase()
   );
 
-  // If quest not found, display an error message
   if (!quest) {
     return (
       <div className="quest-tasks-page">
@@ -58,6 +59,7 @@ const QuestTasks = () => {
             {endDate && <div>Time Left: {timeLeft}</div>}
           </div>
         </div>
+        {user && 
         <div className="quest-tasks">
           <div className='quest-task-container'>
             {questTasks.map((task, index) => (
@@ -76,6 +78,12 @@ const QuestTasks = () => {
             ))}
           </div>
         </div>  
+        }
+        {!user &&
+          <div className='profile-info-no-user'>
+            <ConnectButton className={"big-connect-button"} />
+          </div>
+        }
       </div>
     </div>
   );

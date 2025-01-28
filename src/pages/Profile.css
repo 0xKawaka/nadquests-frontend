@@ -1,7 +1,6 @@
 .profile-page {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
     padding: 20px;
     color: #FBFAF9; /* Monad Off-White */
@@ -69,6 +68,12 @@
 
 .collected-items li p {
     font-size: 1rem;
+    color: #FBFAF9; /* Monad Off-White */
+}
+
+.profile-info-no-user {
+    font-size: 1.2rem;
+    text-align: center;
     color: #FBFAF9; /* Monad Off-White */
 }
 

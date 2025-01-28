@@ -1,11 +1,11 @@
 import React from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 
-const ConnectButton = () => {
+const ConnectButton = ({className}) => {
   const { login } = usePrivy();
 
   return (
-    <button className="connect-button" onClick={login}>
+    <button className={className} onClick={login}>
       Connect
     </button>
   );

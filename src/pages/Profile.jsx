@@ -2,6 +2,7 @@
 import React from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 import './Profile.css'; // Importez le fichier CSS
+import ConnectButton from '../components/ConnectButton';
 
 const ProfilePage = () => {
   const { user } = usePrivy();
@@ -15,31 +16,38 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
-      {user &&
-        <div className="profile-container">
-          <div className='page-title'>Profile</div>
-          <div className="profile-info">
-            <h2>User Information</h2>
-            <p>Email: {user.email}</p>
-            <p>Wallet Address: {user.wallet?.address}</p>
+      <div className="profile-container">
+        <div className='page-title'>Profile</div>
+        {user &&
+          <div className="profile-infos-container">
+            <div className="profile-info">
+              <h2>User Information</h2>
+              <p>Email: {user.email}</p>
+              <p>Wallet Address: {user.wallet?.address}</p>
+            </div>
+            <div className="collected-items">
+              <h2>Collected Items</h2>
+              {collectedItems.length > 0 ? (
+                <ul>
+                  {collectedItems.map((item) => (
+                    <li key={item.id}>
+                      <h3>{item.name}</h3>
+                      <p>{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No items collected yet.</p>
+              )}
+            </div>
           </div>
-          <div className="collected-items">
-            <h2>Collected Items</h2>
-            {collectedItems.length > 0 ? (
-              <ul>
-                {collectedItems.map((item) => (
-                  <li key={item.id}>
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No items collected yet.</p>
-            )}
+        }
+        {!user &&
+          <div className='profile-info-no-user'>
+            <ConnectButton className={"big-connect-button"} />
           </div>
-        </div>
-      }
+        }
+      </div>
     </div>
   );
 };

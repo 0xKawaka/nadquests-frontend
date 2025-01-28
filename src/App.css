@@ -7,3 +7,14 @@
   justify-content: center;
   text-align: center;
 }
+
+.big-connect-button {
+  background-color: rgba(131, 110, 249, 1);
+  color: #ffffff;
+  border: none;
+  padding: 2.4vh 9.5vw;
+  font-size: 1.5vw;
+  border-radius: 0.4vw;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}

@@ -13,7 +13,7 @@ const LoginButton = () => {
       {authenticated ? (
         <LogoutButton />
       ) : (
-        <ConnectButton />
+        <ConnectButton className={"connect-button"} />
       )}
     </div>
   );
