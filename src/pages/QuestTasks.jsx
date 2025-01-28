@@ -15,7 +15,7 @@ const QuestTasks = () => {
   const { user } = usePrivy();
   const { title } = useParams(); // Assumes the route is defined with :title
   const navigate = useNavigate();
-  const { userX, loading, error, login, logout, ensureAuthenticated } = useAuth();
+  // const { userX, loading, error, login, logout, ensureAuthenticated } = useAuth();
 
   const quest = quests.find(
     (q) => q.title.toLowerCase() === decodeURIComponent(title).toLowerCase()
