@@ -1,9 +1,17 @@
 /* src/pages/QuestTasksPage.css */
 
-.quest-tasks-page {
+.quest-tasks-page-container {
   padding-top: 4vh;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.quest-tasks-page {
+  background: rgba(32, 0, 82, 0.7);
+  border-radius: 10px;
+  padding: 2vh 2vw;
+  margin-bottom: 2vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .back-button {

@@ -36,45 +36,47 @@ const QuestTasks = () => {
   const questTasks = tasks[quest.title] || [];
 
   return (
-    <div className="quest-tasks-page">
-      <button className="back-button" onClick={() => navigate('/quests')}>
-        &larr; Back to Quests
-      </button>
-      <div className="quest-header">
-        <div className="quest-image">
-          <img
-            src={questsImages[quest.title]}
-            alt={quest.title}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = '/images/default.jpg'; // Fallback image
-            }}
-          />
+    <div className="quest-tasks-page-container">
+      <div className="quest-tasks-page">
+        <button className="back-button" onClick={() => navigate('/quests')}>
+          &larr; Back to Quests
+        </button>
+        <div className="quest-header">
+          <div className="quest-image">
+            <img
+              src={questsImages[quest.title]}
+              alt={quest.title}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/images/default.jpg'; // Fallback image
+              }}
+            />
+          </div>
+          <div className="quest-info">
+            <h1>{quest.title}</h1>
+            <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
+            {endDate && <div>Time Left: {timeLeft}</div>}
+          </div>
         </div>
-        <div className="quest-info">
-          <h1>{quest.title}</h1>
-          <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
-          {endDate && <div>Time Left: {timeLeft}</div>}
-        </div>
-      </div>
-      <div className="quest-tasks">
-        <h2>Tasks</h2>
-        <div className='quest-task-container'>
-          {questTasks.map((task, index) => (
-            <div key={index} className="task-item">
-              <div className="task-index-and-description">
-                <div className='task-index'>{index}</div>
-                <div>{task.description}</div>
+        <div className="quest-tasks">
+          <h2>Tasks</h2>
+          <div className='quest-task-container'>
+            {questTasks.map((task, index) => (
+              <div key={index} className="task-item">
+                <div className="task-index-and-description">
+                  <div className='task-index'>{index}</div>
+                  <div>{task.description}</div>
+                </div>
+                <button
+                  className="task-button"
+                  onClick={() => handleTaskClick(task.button)}
+                >
+                  {task.button}
+                </button>
               </div>
-              <button
-                className="task-button"
-                onClick={() => handleTaskClick(task.button)}
-              >
-                {task.button}
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </div>  
       </div>
     </div>
   );
