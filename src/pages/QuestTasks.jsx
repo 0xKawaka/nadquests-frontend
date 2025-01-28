@@ -59,7 +59,6 @@ const QuestTasks = () => {
           </div>
         </div>
         <div className="quest-tasks">
-          <h2>Tasks</h2>
           <div className='quest-task-container'>
             {questTasks.map((task, index) => (
               <div key={index} className="task-item">

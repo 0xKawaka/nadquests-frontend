@@ -10,6 +10,7 @@
   background: rgba(32, 0, 82, 0.7);
   border-radius: 10px;
   padding: 2vh 2vw;
+  padding-bottom: 4vh;
   margin-bottom: 2vh;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -64,9 +65,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 0.1vw solid #ddd;
+  border: 0.1vw solid #b1b1b1;
   border-radius: 0.2vw;
-  padding: 1.5vh 1vw;
+  padding: 1vh 1vw;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .task-index-and-description {
