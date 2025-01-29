@@ -24,7 +24,8 @@ const useProvideAuth = () => {
   }, []);
 
   const login = () => {
-    window.location.href = 'http://localhost:4000/auth/twitter';
+    const redirectUrl = encodeURIComponent(window.location.href);
+    window.location.href = `http://localhost:4000/auth/twitter?redirectUrl=${redirectUrl}`;
   };
 
   const logout = () => {
