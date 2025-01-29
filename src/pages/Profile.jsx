@@ -8,12 +8,15 @@ const ProfilePage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const collectedItems = [
-    { id: 1, name: 'Succes', description: 'This is item 1', image: '/src/images/badge/test.png', unlocked: true },
-    { id: 2, name: 'Item 2', description: 'This is item 2', image: '/src/images/badge/test.png', unlocked: false },
-    { id: 3, name: 'Item 3', description: 'This is item 3', image: '/src/images/badge/test.png', unlocked: true },
-    { id: 4, name: 'Item 4', description: 'This is item 4', image: '/src/images/badge/test.png', unlocked: false },
-    { id: 5, name: 'Item 5', description: 'This is item 5', image: '/src/images/badge/test.png', unlocked: true },
-    { id: 6, name: 'Item 6', description: 'This is item 6', image: '/src/images/badge/test.png', unlocked: false },
+    { id: 1, name: 'Succes', description: 'This is item 1', image: '/src/images/badge/1.png', unlocked: true },
+    { id: 2, name: 'Item 2', description: 'This is item 2', image: '/src/images/badge/2.png', unlocked: false },
+    { id: 3, name: 'Item 3', description: 'This is item 3', image: '/src/images/badge/3.png', unlocked: true },
+    { id: 4, name: 'Item 4', description: 'This is item 4', image: '/src/images/badge/4.png', unlocked: false },
+    { id: 5, name: 'Item 5', description: 'This is item 5', image: '/src/images/badge/5.png', unlocked: true },
+    { id: 6, name: 'Item 6', description: 'This is item 6', image: '/src/images/badge/6.png', unlocked: false },
+    { id: 6, name: 'Item 6', description: 'This is item 6', image: '/src/images/badge/7.png', unlocked: false },
+    { id: 6, name: 'Item 6', description: 'This is item 6', image: '/src/images/badge/8.png', unlocked: false },
+
   ];
 
   return (

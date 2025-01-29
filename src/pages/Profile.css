@@ -1,3 +1,4 @@
+/* Profil Page Styles */
 .profile-page {
     display: flex;
     justify-content: center;
@@ -53,6 +54,11 @@
     padding: 15px;
     margin-bottom: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120px; /* Réduit la hauteur des éléments */
 }
 
 .collected-items li:hover {
@@ -71,6 +77,51 @@
     color: #FBFAF9; /* Monad Off-White */
 }
 
+.collected-items .item-image {
+    width: 50px;  /* Réduit la taille des images */
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Pour améliorer la grille des items */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;  /* Espacement homogène entre les items */
+}
+
+/* Centrer l'image et le titre à l'intérieur de chaque carte d'élément */
+.item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre horizontalement */
+    justify-content: center; /* Centre verticalement */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    height: 150px; /* Ajustez la hauteur pour une meilleure disposition */
+    text-align: center; /* Centre le texte */
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
+.item-image {
+    width: 50px;  /* Réduit la taille des images */
+    height: 50px;
+    margin-bottom: 10px;  /* Espacement entre l'image et le titre */
+}
+
+.item-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #333;
+}
+
+/* Ajustements des boutons de connexion */
 .profile-info-no-user {
     font-size: 1.2rem;
     text-align: center;
@@ -88,6 +139,7 @@
         transform: translateY(0);
     }
 }
+
 /* Modal (Popup) Overlay */
 .popup-overlay {
     position: fixed;

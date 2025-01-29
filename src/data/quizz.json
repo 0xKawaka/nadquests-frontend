@@ -1,0 +1,36 @@
+[
+    {
+      "title": "General Knowledge Quiz",
+      "startDate": "2025-01-01T00:00:00Z",
+      "endDate": "2025-02-01T00:00:00Z",
+      "description": "A fun quiz to test your general knowledge skills.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQgQo9Kd896nXomSHysENjMm6rBgFvSv_2A&s",
+      "questions": [
+        {
+          "question": "What is the capital of France?",
+          "options": ["Berlin", "Paris", "Madrid", "Rome"],
+          "correctAnswer": "Paris"
+        },
+        {
+          "question": "What is 2 + 2?",
+          "options": ["3", "4", "5", "6"],
+          "correctAnswer": "4"
+        }
+      ]
+    },
+    {
+      "title": "Science Quiz",
+      "startDate": "2025-01-10T00:00:00Z",
+      "endDate": "2025-02-10T00:00:00Z",
+      "description": "Test your knowledge of science.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQgQo9Kd896nXomSHysENjMm6rBgFvSv_2A&s",
+      "questions": [
+        {
+          "question": "What is the chemical symbol for water?",
+          "options": ["H2O", "O2", "CO2", "HO"],
+          "correctAnswer": "H2O"
+        }
+      ]
+    }
+  ]
+  
