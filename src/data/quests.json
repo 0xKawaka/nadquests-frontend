@@ -16,5 +16,11 @@
     "isLive": true,
     "startDate": "2025-01-10T00:00:00",
     "endDate": "2025-02-10T23:59:59"
+  },
+  {
+    "title": "Holiday Special",
+    "isLive": true,
+    "startDate": "2025-01-10T00:00:00",
+    "endDate": "2025-02-10T23:59:59"
   }
 ]
