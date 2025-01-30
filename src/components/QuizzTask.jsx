@@ -80,16 +80,6 @@ const QuizzTask = ({ taskTitle, onComplete }) => {
   return (
     <div className="quizz-task-page-container">
       <div className="quizz-task-page">
-        {/* Quiz Header */}
-        <div className="quiz-header">
-          <img src={quiz.image} alt={quiz.title} className="quiz-image" />
-          <div className="quiz-info">
-            <h1>{quiz.title}</h1>
-            <p>{quiz.description}</p>
-          </div>
-        </div>
-
-        {/* Quiz Questions */}
         <div className="quiz-questions">
           {quiz.questions.map((question, index) => (
             <div key={index} className="question-item">
@@ -117,7 +107,6 @@ const QuizzTask = ({ taskTitle, onComplete }) => {
           ))}
         </div>
 
-        {/* Submit Button */}
         <div className="quiz-footer">
           <button className="submit-button" onClick={handleSubmit}>
             Submit
@@ -125,7 +114,6 @@ const QuizzTask = ({ taskTitle, onComplete }) => {
         </div>
       </div>
 
-      {/* Cool Overlay Window to Show Score */}
       {showResultOverlay && (
         <div className="quiz-result-overlay">
           <div className="quiz-result-content">
