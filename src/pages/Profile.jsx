@@ -37,25 +37,26 @@ const ProfilePage = () => {
               <p>💰 Wallet Address: {user.wallet?.address}</p>
             </div>
             <div className="collected-items">
-              <h2>Collected Items</h2>
-              <div className="items-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
-                {collectedItems.map((item) => (
-                  <div key={item.id} className="item-card" onClick={() => setSelectedItem(item)}>
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      className="item-image" 
-                      style={{
-                        width: '80px', 
-                        height: '80px', 
-                        filter: item.unlocked ? 'none' : 'grayscale(100%)'
-                      }}
-                    />
-                    <h3>{item.name}</h3>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <h2>Collected Items</h2>
+  <div className="items-grid">
+    {collectedItems.map((item) => (
+      <div key={item.id} className="item-card" onClick={() => setSelectedItem(item)}>
+        <img 
+          src={item.image} 
+          alt={item.name} 
+          className="item-image" 
+          style={{
+            width: '80px', 
+            height: '80px', 
+            filter: item.unlocked ? 'none' : 'grayscale(100%)'
+          }}
+        />
+        <h3>{item.name}</h3>
+      </div>
+    ))}
+  </div>
+</div>
+
           </div>
         ) : (
           <div className='profile-info-no-user'>

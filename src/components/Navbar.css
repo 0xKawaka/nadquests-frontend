@@ -1,8 +1,9 @@
+/* Structure de la navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #200052; /* Monad Blue */
+  background: #200052;
   padding: 15px 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   position: sticky;
@@ -16,7 +17,7 @@
 }
 
 .navbar-item {
-  color: #FBFAF9; /* Monad Off-White */
+  color: #FBFAF9;
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
@@ -27,7 +28,7 @@
 }
 
 .navbar-item:hover {
-  background: rgba(160, 5, 93, 0.5); /* Monad Berry avec transparence */
+  background: rgba(160, 5, 93, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -37,10 +38,11 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Login Button */
 .login-button {
-  background: #836EF9; /* Monad Purple */
-  border: 2px solid #836EF9; /* Monad Purple */
-  color: #FBFAF9; /* Monad Off-White */
+  background: #836EF9;
+  border: 2px solid #836EF9;
+  color: #FBFAF9;
   font-size: 1rem;
   font-weight: 500;
   padding: 10px 20px;
@@ -51,8 +53,8 @@
 }
 
 .login-button:hover {
-  background: #A0055D; /* Monad Berry */
-  border-color: #A0055D; /* Monad Berry */
+  background: #A0055D;
+  border-color: #A0055D;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -60,4 +62,74 @@
 .login-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Menu Hamburger */
+.navbar-mobile {
+  display: none;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #FBFAF9;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Animation du hamburger quand il est ouvert */
+.hamburger.open .bar:nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 7px;
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -7px;
+}
+
+/* Styles pour les petits écrans (mobile) */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: #200052;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+  }
+
+  .navbar-links.active {
+    transform: translateX(0);
+  }
+
+  .navbar-mobile {
+    display: block;
+  }
+
+  .navbar-links .navbar-item {
+    font-size: 1rem;
+    padding: 10px;
+  }
 }

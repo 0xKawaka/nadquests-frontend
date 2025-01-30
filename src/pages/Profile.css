@@ -41,15 +41,16 @@
     color: #FBFAF9; /* Monad Off-White */
 }
 
+/* Ajustement pour les éléments collectés */
 .collected-items ul {
-    list-style-type: none; /* Supprime les puces des listes */
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 .collected-items li {
-    background-color: rgba(131, 110, 249, 0.1); /* Monad Purple avec transparence */
-    border: 1px solid #836EF9; /* Monad Purple */
+    background-color: rgba(131, 110, 249, 0.1);
+    border: 1px solid #836EF9;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 10px;
@@ -58,51 +59,59 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 120px; /* Réduit la hauteur des éléments */
+    height: 120px;
 }
 
 .collected-items li:hover {
     transform: translateY(-5px);
-    background-color: rgba(160, 5, 93, 0.2); /* Monad Berry avec transparence */
+    background-color: rgba(160, 5, 93, 0.2);
 }
 
 .collected-items li h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    color: #FBFAF9; /* Monad Off-White */
+    color: #FBFAF9;
 }
 
 .collected-items li p {
     font-size: 1rem;
-    color: #FBFAF9; /* Monad Off-White */
+    color: #FBFAF9;
 }
 
 .collected-items .item-image {
-    width: 50px;  /* Réduit la taille des images */
+    width: 50px;
     height: 50px;
     margin-bottom: 10px;
 }
 
-/* Pour améliorer la grille des items */
+
+/* Styles pour la grille des éléments collectés */
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;  /* Espacement homogène entre les items */
+    grid-template-columns: repeat(4, 1fr);  /* Par défaut 4 colonnes */
+    gap: 10px;
 }
 
-/* Centrer l'image et le titre à l'intérieur de chaque carte d'élément */
+@media (max-width: 768px) {
+    /* Sur les écrans plus petits, passer à 2 colonnes */
+    .items-grid {
+        grid-template-columns: repeat(2, 1fr);  /* 2 colonnes pour les petits écrans */
+    }
+}
+
+
 .item-card {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre horizontalement */
-    justify-content: center; /* Centre verticalement */
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s;
-    height: 150px; /* Ajustez la hauteur pour une meilleure disposition */
-    text-align: center; /* Centre le texte */
+    height: 150px;
+    text-align: center;
 }
 
 .item-card:hover {
@@ -110,9 +119,9 @@
 }
 
 .item-image {
-    width: 50px;  /* Réduit la taille des images */
+    width: 50px;
     height: 50px;
-    margin-bottom: 10px;  /* Espacement entre l'image et le titre */
+    margin-bottom: 10px;
 }
 
 .item-card h3 {
@@ -121,11 +130,10 @@
     color: #333;
 }
 
-/* Ajustements des boutons de connexion */
 .profile-info-no-user {
     font-size: 1.2rem;
     text-align: center;
-    color: #FBFAF9; /* Monad Off-White */
+    color: #FBFAF9;
 }
 
 /* Animation pour la page */
@@ -140,7 +148,7 @@
     }
 }
 
-/* Modal (Popup) Overlay */
+/* Modal Overlay */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -154,7 +162,7 @@
     z-index: 1000;
 }
 
-/* Modal (Popup) Box */
+/* Modal Box */
 .popup {
     background: #fff;
     padding: 20px;
@@ -193,4 +201,98 @@
 
 .popup button:hover {
     background: #6b5fd9;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    /* Adaptation de la grille à une colonne pour les petits écrans */
+    .items-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-container h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info h2,
+    .collected-items h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+    }
+
+    .collected-items li {
+        height: auto;
+        padding: 10px;
+    }
+
+    .item-card {
+        height: auto;
+        padding: 15px;
+    }
+
+    .item-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .item-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .popup {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 15px;
+    }
+
+    .profile-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-info h2,
+    .collected-items h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile-info p {
+        font-size: 0.9rem;
+    }
+
+    .collected-items li h3 {
+        font-size: 1.2rem;
+    }
+
+    .item-card h3 {
+        font-size: 1rem;
+    }
+
+    .item-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    .popup {
+        width: 220px;
+        padding: 15px;
+    }
+
+    .popup h2 {
+        font-size: 1.3rem;
+    }
+
+    .popup p {
+        font-size: 0.9rem;
+    }
 }
