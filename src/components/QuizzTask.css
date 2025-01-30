@@ -91,6 +91,53 @@
     justify-content: flex-end;
     margin-top: 2vh;
   }
+
+/* Hide the default checkbox */
+.quiztask-checkbox {
+    display: none;
+}
+
+/* Style the custom checkbox container */
+.quiztask-checkbox + label {
+    position: relative;
+    padding-left: 30px; /* Space for the custom checkbox */
+    cursor: pointer;
+    display: block; /* Ensure the label behaves as a block element */
+    margin-bottom: 10px; /* Add spacing between options */
+}
+
+/* Create the custom checkbox */
+.quiztask-checkbox + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; /* Width of the checkbox */
+    height: 20px; /* Height of the checkbox */
+    border: 2px solid #ccc; /* Border color */
+    background-color: #fff; /* Background color */
+    border-radius: 4px; /* Optional: Rounded corners */
+}
+
+.quiztask-checkbox:hover + label:before {
+    border-color: #6F3FF5; /* Change the background color on hover */
+}
+
+/* Change the checkbox color when checked */
+.quiztask-checkbox:checked + label:before {
+    background-color: #6F3FF5; /* Checkbox color when checked */
+    border-color: #6F3FF5; /* Border color when checked */
+}
+
+/* Add a checkmark (optional) */
+.quiztask-checkbox:checked + label:after {
+    content: "✔";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    color: #fff; /* Checkmark color */
+    font-size: 16px; /* Checkmark size */
+}
   
   .submit-button {
     background-color: #6F3FF5;

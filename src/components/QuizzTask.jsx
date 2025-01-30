@@ -91,6 +91,7 @@ const QuizzTask = ({ taskTitle, onComplete }) => {
                   <div key={optionIndex} className="option">
                     <input
                       type="checkbox"
+                      className="quiztask-checkbox"
                       name={question.question}
                       value={option}
                       id={`${question.question}-option-${optionIndex}`}
