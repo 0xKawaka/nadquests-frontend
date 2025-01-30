@@ -1,6 +1,6 @@
 [
     {
-      "title": "General Knowledge Quiz",
+      "title": "Beginner's Journey",
       "startDate": "2025-01-01T00:00:00Z",
       "endDate": "2025-02-01T00:00:00Z",
       "description": "A fun quiz to test your general knowledge skills.",
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "title": "Science Quiz",
+      "title": "Advanced Challenges",
       "startDate": "2025-01-10T00:00:00Z",
       "endDate": "2025-02-10T00:00:00Z",
       "description": "Test your knowledge of science.",

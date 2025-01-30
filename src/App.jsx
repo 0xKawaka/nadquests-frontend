@@ -9,8 +9,6 @@ import Navbar from './components/Navbar';
 import ProfilePage from './pages/Profile';
 import QuestsList from './pages/QuestsList';
 import QuestTasks from './pages/QuestTasks';
-import QuizzList from './pages/QuizzList';
-import QuizzTask from './pages/QuizzTask';
 import Home from './pages/Home';
 
 const config = createConfig({
@@ -44,8 +42,6 @@ export default function App() {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/quests" element={<QuestsList />} />
                 <Route path="/quest/:title" element={<QuestTasks />} />
-                <Route path="/quizz" element={<QuizzList />} />
-                <Route path="/quizz/:title" element={<QuizzTask />} /> {/* Corrected this route */}
               </Routes>
             </div>
           </Router>

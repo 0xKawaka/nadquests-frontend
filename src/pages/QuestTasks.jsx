@@ -10,12 +10,14 @@ import { isQuestLive, getTimeLeft } from '../utils/quests';
 import { usePrivy } from '@privy-io/react-auth';
 import ConnectButton from '../components/ConnectButton';
 import useAuth from '../hooks/useAuth';
+import QuizzTask from '../components/QuizzTask';
 
 const QuestTasks = () => {
   const { user } = usePrivy();
   const { title } = useParams(); // Assumes the route is defined with :title
   const navigate = useNavigate();
   const { userX, loading, error, login, logout, ensureAuthenticated } = useAuth();
+  
 
   const quest = quests.find(
     (q) => q.title.toLowerCase() === decodeURIComponent(title).toLowerCase()
@@ -42,6 +44,7 @@ const QuestTasks = () => {
   const questTasks = tasks[quest.title] || [];
 
   const [completedTasks, setCompletedTasks] = useState({});
+  const [showQuiz, setShowQuiz] = useState(null);
 
   // Handler for task button clicks
   const handleTaskClick = (buttonType, taskId) => {
@@ -52,7 +55,16 @@ const QuestTasks = () => {
     } else if (buttonType.toLowerCase() === 'follow') {
       ensureAuthenticated();
     }
-    // Add more conditions as needed for other task types
+    if (buttonType.toLowerCase() === 'quiz') {
+      if(completedTasks[taskId])
+        return;
+      setShowQuiz({ taskId, quizTitle: quest.title });
+    }
+  };
+
+  const handleQuizComplete = (taskId) => {
+    setCompletedTasks((prev) => ({ ...prev, [taskId]: true }));
+    setShowQuiz(null);
   };
 
   return (
@@ -86,28 +98,37 @@ const QuestTasks = () => {
                   <div className="task-index-and-description">
                     {completedTasks[index] ? (
                       <>
-                      <div className="task-checkmark">&#10003;</div>
-                      <div className="task-description task-description-complete">{task.description}</div>
+                        <div className="task-checkmark">&#10003;</div>
+                        <div className="task-description task-description-complete">
+                          {task.description}
+                        </div>
                       </>
                     ) : (
                       <>
-                      <div className="task-index">{index + 1}</div>
-                      <div className="task-description">{task.description}</div>
+                        <div className="task-index">{index + 1}</div>
+                        <div className="task-description">{task.description}</div>
                       </>
                     )}
-                    
                   </div>
-                  <a href={task.link} target="_blank" rel="noreferrer">
-                    <button
-                      className="task-button"
-                      onClick={() => handleTaskClick(task.button, index)}
-                    >
-                      {task.button}
-                    </button>
-                  </a>
+                  <button
+                    className="task-button"
+                    onClick={() => handleTaskClick(task.button, index, task.quizTitle)}
+                  >
+                    {task.button}
+                  </button>
                 </div>
               ))}
             </div>
+
+            {/* Conditionally render the QuizzTask modal/section if a quiz is triggered */}
+            {showQuiz && (
+              <div className="quiz-modal">
+                <QuizzTask
+                  taskTitle={showQuiz.quizTitle}
+                  onComplete={() => handleQuizComplete(showQuiz.taskId)}
+                />
+              </div>
+            )}
           </div>
         ) : (
           <div className="profile-info-no-user">
@@ -118,5 +139,69 @@ const QuestTasks = () => {
     </div>
   );
 };
+
+//   return (
+//     <div className="quest-tasks-page-container">
+//       <div className="quest-tasks-page">
+//         <button className="back-button" onClick={() => navigate('/quests')}>
+//           &larr; Back to Quests
+//         </button>
+//         <div className="quest-header">
+//           <div className="quest-image">
+//             <img
+//               src={questsImages[quest.title]}
+//               alt={quest.title}
+//               onError={(e) => {
+//                 e.target.onerror = null;
+//                 e.target.src = '/images/default.jpg'; // Fallback image
+//               }}
+//             />
+//           </div>
+//           <div className="quest-info">
+//             <h1>{quest.title}</h1>
+//             <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
+//             {endDate && <div>Time Left: {timeLeft}</div>}
+//           </div>
+//         </div>
+//         {user ? (
+//           <div className="quest-tasks">
+//             <div className="quest-task-container">
+//               {questTasks.map((task, index) => (
+//                 <div key={"task"+index} className="task-item">
+//                   <div className="task-index-and-description">
+//                     {completedTasks[index] ? (
+//                       <>
+//                       <div className="task-checkmark">&#10003;</div>
+//                       <div className="task-description task-description-complete">{task.description}</div>
+//                       </>
+//                     ) : (
+//                       <>
+//                       <div className="task-index">{index + 1}</div>
+//                       <div className="task-description">{task.description}</div>
+//                       </>
+//                     )}
+                    
+//                   </div>
+//                   <a href={task.link} target="_blank" rel="noreferrer">
+//                     <button
+//                       className="task-button"
+//                       onClick={() => handleTaskClick(task.button, index)}
+//                     >
+//                       {task.button}
+//                     </button>
+//                   </a>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         ) : (
+//           <div className="profile-info-no-user">
+//             <ConnectButton className="big-connect-button" />
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
 
 export default QuestTasks;
