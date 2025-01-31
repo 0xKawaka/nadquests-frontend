@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { usePrivy } from '@privy-io/react-auth';
 import './Profile.css';
-import ConnectButton from '../components/ConnectButton';
+import CustomConnectButton from '../components/CustomConnectButton';
+import { useAccount } from 'wagmi';
 
 const ProfilePage = () => {
-  const { user } = usePrivy();
   const [selectedItem, setSelectedItem] = useState(null);
-
+  const { address, connector, isConnected } = useAccount();
   const collectedItems = [
     { id: 1, name: 'SALMONAD', description: 'This is item 1', image: '/src/images/badge/1.png', unlocked: true },
     { id: 2, name: 'CHOG', description: 'This is item 2', image: '/src/images/badge/2.png', unlocked: true },
@@ -29,12 +28,12 @@ const ProfilePage = () => {
     <div className="profile-page">
       <div className="profile-container">
         <div className='page-title'>Profile</div>
-        {user ? (
+        {isConnected ? (
           <div className="profile-infos-container">
             <div className="profile-info-box">
               <h2>👤 User Information</h2>
-              <p>📧 Email: {user.email}</p>
-              <p>💰 Wallet Address: {user.wallet?.address}</p>
+              {/* <p>📧 Email: {user.email}</p> */}
+              <p>💰 Wallet Address: {address}</p>
             </div>
             <div className="collected-items">
   <h2>Collected Items</h2>
@@ -60,7 +59,7 @@ const ProfilePage = () => {
           </div>
         ) : (
           <div className='profile-info-no-user'>
-            <ConnectButton className="big-connect-button" />
+            <CustomConnectButton className='big-connect-button' />
           </div>
         )}
         

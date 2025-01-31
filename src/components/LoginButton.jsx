@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import axios from 'axios';
-import ConnectButtonWrapper from './ConnectButton';
+import CustomConnectButton from './CustomConnectButton';
 import LogoutButton from './LogoutButton';
 import './LoginButton.css';
 
@@ -32,7 +32,7 @@ const LoginButton = () => {
 
   return (
     <div className="top-right-buttons">
-      {isConnected ? <LogoutButton /> : <ConnectButtonWrapper />}
+      <CustomConnectButton />
     </div>
   );
 };

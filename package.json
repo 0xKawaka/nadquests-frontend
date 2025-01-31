@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@privy-io/react-auth": "^2.0.9",
     "@rainbow-me/rainbowkit": "^2.2.3",
     "@reown/appkit": "^1.6.5",
     "@reown/appkit-adapter-wagmi": "^1.6.5",

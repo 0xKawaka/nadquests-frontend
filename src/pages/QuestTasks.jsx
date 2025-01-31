@@ -8,10 +8,10 @@ import './QuestTasks.css';
 import { questsImages } from '../images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
 import { isQuestLive, getTimeLeft } from '../utils/quests';
 import { usePrivy } from '@privy-io/react-auth';
-import ConnectButton from '../components/ConnectButton';
 import useAuth from '../hooks/useAuth';
 import QuizzTask from '../components/QuizzTask';
 import ClaimButton from '../components/ClaimButton';
+import CustomConnectButton from '../components/CustomConnectButton';
 
 const QuestTasks = () => {
   const { user } = usePrivy();
@@ -132,76 +132,12 @@ const QuestTasks = () => {
           </div>
         ) : (
           <div className="profile-info-no-user">
-            <ConnectButton className="big-connect-button" />
+            <CustomConnectButton className="big-connect-button" />
           </div>
         )}
       </div>
     </div>
   );
 };
-
-//   return (
-//     <div className="quest-tasks-page-container">
-//       <div className="quest-tasks-page">
-//         <button className="back-button" onClick={() => navigate('/quests')}>
-//           &larr; Back to Quests
-//         </button>
-//         <div className="quest-header">
-//           <div className="quest-image">
-//             <img
-//               src={questsImages[quest.title]}
-//               alt={quest.title}
-//               onError={(e) => {
-//                 e.target.onerror = null;
-//                 e.target.src = '/images/default.jpg'; // Fallback image
-//               }}
-//             />
-//           </div>
-//           <div className="quest-info">
-//             <h1>{quest.title}</h1>
-//             <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
-//             {endDate && <div>Time Left: {timeLeft}</div>}
-//           </div>
-//         </div>
-//         {user ? (
-//           <div className="quest-tasks">
-//             <div className="quest-task-container">
-//               {questTasks.map((task, index) => (
-//                 <div key={"task"+index} className="task-item">
-//                   <div className="task-index-and-description">
-//                     {completedTasks[index] ? (
-//                       <>
-//                       <div className="task-checkmark">&#10003;</div>
-//                       <div className="task-description task-description-complete">{task.description}</div>
-//                       </>
-//                     ) : (
-//                       <>
-//                       <div className="task-index">{index + 1}</div>
-//                       <div className="task-description">{task.description}</div>
-//                       </>
-//                     )}
-                    
-//                   </div>
-//                   <a href={task.link} target="_blank" rel="noreferrer">
-//                     <button
-//                       className="task-button"
-//                       onClick={() => handleTaskClick(task.button, index)}
-//                     >
-//                       {task.button}
-//                     </button>
-//                   </a>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         ) : (
-//           <div className="profile-info-no-user">
-//             <ConnectButton className="big-connect-button" />
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
 
 export default QuestTasks;
