@@ -11,6 +11,7 @@ import { usePrivy } from '@privy-io/react-auth';
 import ConnectButton from '../components/ConnectButton';
 import useAuth from '../hooks/useAuth';
 import QuizzTask from '../components/QuizzTask';
+import ClaimButton from '../components/ClaimButton';
 
 const QuestTasks = () => {
   const { user } = usePrivy();
@@ -119,8 +120,7 @@ const QuestTasks = () => {
                 </div>
               ))}
             </div>
-
-            {/* Conditionally render the QuizzTask modal/section if a quiz is triggered */}
+            <ClaimButton />
             {showQuiz && (
               <div className="quiz-modal">
                 <QuizzTask

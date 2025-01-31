@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { usePrivy } from '@privy-io/react-auth';
+import { useAccount } from 'wagmi';
 import axios from 'axios';
-import ConnectButton from './ConnectButton';
+import ConnectButtonWrapper from './ConnectButton';
 import LogoutButton from './LogoutButton';
 import './LoginButton.css';
 
 const LoginButton = () => {
-  const { authenticated, user } = usePrivy();
+  const { address, isConnected } = useAccount();
 
   useEffect(() => {
     const sendWalletAddress = async (walletAddress) => {
@@ -14,32 +14,25 @@ const LoginButton = () => {
         const response = await axios.post('http://localhost:3000/api/users', {
           walletAddress,
         });
-
-        console.log('Wallet address envoyé avec succès:', response.data);
+        console.log('Wallet address sent successfully:', response.data);
       } catch (error) {
-        console.error('Erreur lors de l’envoi du walletAddress:', error);
+        console.error('Error sending wallet address:', error);
       }
     };
 
-    if (authenticated) {
-      let walletAddress = localStorage.getItem('walletAddress');
+    if (isConnected && address) {
+      let storedWalletAddress = localStorage.getItem('walletAddress');
 
-      // Si non trouvé dans le localStorage, on le récupère de l'utilisateur
-      if (!walletAddress && user?.wallet?.address) {
-        walletAddress = user.wallet.address;
-        localStorage.setItem('walletAddress', walletAddress);
-      }
-
-      // Envoie l'adresse si elle existe
-      if (walletAddress) {
-        sendWalletAddress(walletAddress);
+      if (!storedWalletAddress) {
+        localStorage.setItem('walletAddress', address);
+        sendWalletAddress(address);
       }
     }
-  }, [authenticated, user]);
+  }, [isConnected, address]);
 
   return (
     <div className="top-right-buttons">
-      {authenticated ? <LogoutButton /> : <ConnectButton className="connect-button" />}
+      {isConnected ? <LogoutButton /> : <ConnectButtonWrapper />}
     </div>
   );
 };

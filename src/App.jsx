@@ -1,39 +1,32 @@
 import './App.css';
-import { PrivyProvider } from '@privy-io/react-auth';
-import { WagmiProvider, createConfig } from 'wagmi';
+import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { http } from 'viem';
-import { mainnet } from 'viem/chains';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import '@rainbow-me/rainbowkit/styles.css';
 import Navbar from './components/Navbar';
 import ProfilePage from './pages/Profile';
 import QuestsList from './pages/QuestsList';
 import QuestTasks from './pages/QuestTasks';
 import Home from './pages/Home';
+import { CHAIN } from './onchain/constants';
 
-const config = createConfig({
-  chains: [mainnet],
-  transports: {
-    [mainnet.id]: http(),
-  },
+const wagmiConfig = getDefaultConfig({
+  appName: 'NadQuests',
+  projectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
+  chains: [CHAIN],
+  ssr: false,
 });
 
 const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <PrivyProvider
-      appId={import.meta.env.VITE_APP_ID}
-      config={{
-        loginMethods: ['email', 'wallet'],
-        appearance: {
-          theme: 'dark',
-          accentColor: '#6F3FF5',
-        },
-      }}
-    >
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+      <RainbowKitProvider theme={darkTheme({
+        accentColor: 'rgba(131, 110, 249, 1)',
+      })}>
           <Router>
             <Navbar />
             <div className="App">
@@ -45,8 +38,8 @@ export default function App() {
               </Routes>
             </div>
           </Router>
-        </QueryClientProvider>
-      </WagmiProvider>
-    </PrivyProvider>
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }

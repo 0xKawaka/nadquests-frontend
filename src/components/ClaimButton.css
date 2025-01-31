@@ -1,0 +1,11 @@
+.claim-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.claim-button {
+  background-color: rgba(131, 110, 249, 1);
+}
