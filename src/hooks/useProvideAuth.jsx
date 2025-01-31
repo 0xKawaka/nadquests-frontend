@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AUTH_URL } from '../config';
 
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
@@ -9,7 +10,7 @@ const useProvideAuth = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/user', {
+        const response = await axios.get(`${AUTH_URL}/api/user`, {
           withCredentials: true,
         });
         setUser(response.data.user);
@@ -25,11 +26,11 @@ const useProvideAuth = () => {
 
   const login = () => {
     const redirectUrl = encodeURIComponent(window.location.href);
-    window.location.href = `http://localhost:4000/auth/twitter?redirectUrl=${redirectUrl}`;
+    window.location.href = `${AUTH_URL}/auth/twitter?redirectUrl=${redirectUrl}`;
   };
 
   const logout = () => {
-    window.location.href = 'http://localhost:4000/logout';
+    window.location.href = `${AUTH_URL}/logout`;
   };
 
   const ensureAuthenticated = () => {
