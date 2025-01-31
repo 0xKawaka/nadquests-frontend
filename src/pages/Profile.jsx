@@ -21,7 +21,7 @@ const ProfilePage = () => {
     { id: 12, name: 'MOUCH', description: 'This is item 6', image: '/src/images/badge/12.png', unlocked: true },
     { id: 13, name: 'MOXY', description: 'This is item 6', image: '/src/images/badge/13.png', unlocked: true },
     { id: 14, name: 'BIRBIE', description: 'This is item 6', image: '/src/images/badge/14.png', unlocked: true },
-    { id: 14, name: 'MONCOCK', description: 'This is item 6', image: '/src/images/badge/15.png', unlocked: true },
+    { id: 15, name: 'MONCOCK', description: 'This is item 6', image: '/src/images/badge/15.png', unlocked: true },
   ];
 
   return (
