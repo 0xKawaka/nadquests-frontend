@@ -1,24 +1,28 @@
 [
   {
     "title": "Beginner's Journey",
+    "id": 1,
     "isLive": true,
     "startDate": null,
     "endDate": null
   },
   {
     "title": "Advanced Challenges",
+    "id": 2,
     "isLive": true,
     "startDate": "2025-01-10T09:00:00",
     "endDate": "2025-01-30T23:59:59"
   },
   {
     "title": "Holiday Special",
+    "id": 3,
     "isLive": true,
     "startDate": "2025-01-10T00:00:00",
     "endDate": "2025-02-10T23:59:59"
   },
   {
     "title": "Holiday Special Bis",
+    "id": 4,
     "isLive": true,
     "startDate": "2025-01-10T00:00:00",
     "endDate": "2025-02-10T23:59:59"

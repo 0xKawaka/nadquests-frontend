@@ -1,24 +1,13 @@
 import React, { useEffect } from 'react';
 import { useAccount } from 'wagmi';
-import axios from 'axios';
 import CustomConnectButton from './CustomConnectButton';
 import './LoginButton.css';
+import { sendWalletAddress } from '../api/post';
 
 const LoginButton = () => {
   const { address, isConnected } = useAccount();
 
   useEffect(() => {
-    const sendWalletAddress = async (walletAddress) => {
-      try {
-        const response = await axios.post('http://localhost:3000/api/users', {
-          walletAddress,
-        });
-        console.log('Wallet address sent successfully:', response.data);
-      } catch (error) {
-        console.error('Error sending wallet address:', error);
-      }
-    };
-
     if (isConnected && address) {
       let storedWalletAddress = localStorage.getItem('walletAddress');
 

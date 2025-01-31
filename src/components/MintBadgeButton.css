@@ -1,4 +1,4 @@
-.claim-button {
+.mint-badge-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -6,6 +6,6 @@
   cursor: pointer;
 }
 
-.claim-button {
+.mint-badge-button {
   background-color: rgba(131, 110, 249, 1);
 }

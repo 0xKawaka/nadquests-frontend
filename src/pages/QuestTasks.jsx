@@ -10,8 +10,8 @@ import { isQuestLive, getTimeLeft } from '../utils/quests';
 import { useAccount } from 'wagmi';
 import useAuth from '../hooks/useAuth';
 import QuizzTask from '../components/QuizzTask';
-import ClaimButton from '../components/ClaimButton';
 import CustomConnectButton from '../components/CustomConnectButton';
+import MintBadgeButton from '../components/MintBadgeButtton';
 
 const QuestTasks = () => {
   const { address, connector, isConnected } = useAccount();
@@ -120,7 +120,7 @@ const QuestTasks = () => {
                 </div>
               ))}
             </div>
-            <ClaimButton />
+            <MintBadgeButton tokenType={quest.id}/>
             {showQuiz && (
               <div className="quiz-modal">
                 <QuizzTask
