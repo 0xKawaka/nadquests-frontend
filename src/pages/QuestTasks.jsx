@@ -7,14 +7,14 @@ import tasks from '../data/tasks.json';
 import './QuestTasks.css';
 import { questsImages } from '../images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
 import { isQuestLive, getTimeLeft } from '../utils/quests';
-import { usePrivy } from '@privy-io/react-auth';
+import { useAccount } from 'wagmi';
 import useAuth from '../hooks/useAuth';
 import QuizzTask from '../components/QuizzTask';
 import ClaimButton from '../components/ClaimButton';
 import CustomConnectButton from '../components/CustomConnectButton';
 
 const QuestTasks = () => {
-  const { user } = usePrivy();
+  const { address, connector, isConnected } = useAccount();
   const { title } = useParams(); // Assumes the route is defined with :title
   const navigate = useNavigate();
   const { userX, loading, error, login, logout, ensureAuthenticated } = useAuth();
@@ -91,7 +91,7 @@ const QuestTasks = () => {
             {endDate && <div>Time Left: {timeLeft}</div>}
           </div>
         </div>
-        {user ? (
+        {isConnected ? (
           <div className="quest-tasks">
             <div className="quest-task-container">
               {questTasks.map((task, index) => (

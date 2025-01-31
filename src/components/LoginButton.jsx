@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import axios from 'axios';
 import CustomConnectButton from './CustomConnectButton';
-import LogoutButton from './LogoutButton';
 import './LoginButton.css';
 
 const LoginButton = () => {
