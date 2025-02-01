@@ -8,21 +8,31 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --primary-color: #836EF9; /* Monad Purple */
+  --secondary-color: #FBFAF9; /* Monad Off-White */
+  --background-color: rgba(0, 0, 0, 0.3);
+  --hover-color: rgba(160, 5, 93, 0.2);
+  --text-color: #FBFAF9;
+  --popup-background: #fff;
+  --popup-text: #333;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #0E100F; /* Monad Black */
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* background: linear-gradient(135deg, #6f3ff5, rgba(131, 110, 249, 1)); */
   background: 
   linear-gradient(
     rgba(111, 63, 245, 0.8), 
     rgba(131, 110, 249, 0.8)
   ), 
   url('./images/background.jpeg') center/cover no-repeat;
+
+  font-family: 'Poppins',s sans-serif;
+  margin: 0;
+  color: var(--text-color);
+  /* overflow-x: hidden; */
 }
 
 h1, h2, h3, h4, h5, h6 {

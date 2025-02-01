@@ -1,24 +1,6 @@
 /* Police moderne */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-:root {
-  --primary-color: #836EF9; /* Monad Purple */
-  --secondary-color: #FBFAF9; /* Monad Off-White */
-  --background-color: rgba(0, 0, 0, 0.3);
-  --hover-color: rgba(160, 5, 93, 0.2);
-  --text-color: #FBFAF9;
-  --popup-background: #fff;
-  --popup-text: #333;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background-color: #1E1E2F;
-  color: var(--text-color);
-  overflow-x: hidden; /* Empêche le scroll horizontal */
-}
-
 .profile-page {
   display: flex;
   justify-content: center;
