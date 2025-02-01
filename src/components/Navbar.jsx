@@ -9,30 +9,57 @@ const Navbar = () => {
 
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
+  const handleNavigate = (path) => {
+    navigate(path);
+    setMenuOpen(false); // Ferme le menu après la navigation
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-links">
-        <div className="navbar-item" onClick={() => navigate('/')}>
-          Home
-        </div>
-        <div className="navbar-item" onClick={() => navigate('/quests')}>
-          Quests
-        </div>
-        <div className="navbar-item" onClick={() => navigate('/profile')}>
-          My Profile
-        </div>
-      </div>
+    <nav className="menu-container">
+      {/* Checkbox pour le menu burger */}
+      <input
+        type="checkbox"
+        aria-label="Toggle menu"
+        checked={isMenuOpen}
+        onChange={toggleMenu}
+      />
+      <span></span>
+      <span></span>
+      <span></span>
 
-      {/* Mobile menu toggle button */}
-      <div className="navbar-mobile" onClick={toggleMenu}>
-        <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
-      </div>
+      {/* Logo */}
+      <a href="/" className="menu-logo">
+        <img
+          src="https://i.ibb.co/JjPc5rrN/logo2.png"
+          alt="My Awesome Website"
+        />
+      </a>
 
-      <LoginButton />
+      {/* Menu items */}
+      <div className="menu">
+        <ul>
+          <li>
+            <a href="#" onClick={() => handleNavigate('/')}>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#quests" onClick={() => handleNavigate('/quests')}>
+              Quests
+            </a>
+          </li>
+          <li>
+            <a href="#profile" onClick={() => handleNavigate('/profile')}>
+              My Profile
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <LoginButton />
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };
