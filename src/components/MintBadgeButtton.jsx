@@ -3,11 +3,13 @@ import { useMintBadge } from '../onchain/useWriteHooks';
 import { getClaimSignature } from '../api/get';
 import { useAccount } from 'wagmi';
 import './MintBadgeButton.css';
+import { useReadClaimedBadge } from '../onchain/useReadHooks';
 
 const MintBadgeButton = ({ tokenType }) => {
   const { address, isConnected } = useAccount();
   const [isRequestingSignature, setIsRequestingSignature] = React.useState(false);
   const { mintNFT, isPending, isSuccess, error } = useMintBadge();
+  const { hasClaimed, refetchHasClaimed } = useReadClaimedBadge({tokenType, address});
 
   async function handleMintNFTClic(tokenType) {
     if(isRequestingSignature || isPending) return;
@@ -19,10 +21,11 @@ const MintBadgeButton = ({ tokenType }) => {
 
   return (
     <div>
-      <button className='mint-badge-button' onClick={() => handleMintNFTClic(tokenType)} disabled={isPending}>
+      {!hasClaimed && <button className='mint-badge-button' onClick={() => handleMintNFTClic(tokenType)} disabled={isPending}>
         {isRequestingSignature || isPending ? "Claiming..." : "Claim Badge"}
-      </button>
+      </button>}
       {isSuccess && <p>Transaction successful!</p>}
+      {hasClaimed && <p>You have already claimed this badge!</p>}
     </div>
   );
 };

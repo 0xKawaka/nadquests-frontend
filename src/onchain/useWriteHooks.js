@@ -1,7 +1,7 @@
 import { useWriteContract } from 'wagmi';
 import { BADGES_ADDRESS } from './constants'; // Import contract address
-import { BADGES_ABI } from './abis';
-
+// import { BADGES_ABI } from './abis';
+import badgesABI from './badges.json'
 
 const useMintBadge = () => {
   const { writeContract, isPending, isSuccess, error } = useWriteContract();
@@ -10,7 +10,7 @@ const useMintBadge = () => {
     try {
       await writeContract({
         address: BADGES_ADDRESS,
-        abi: BADGES_ABI,
+        abi: badgesABI,
         functionName: 'mintNFT',
         args: [tokenType, key, signature],
       });
