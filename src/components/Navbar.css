@@ -1,17 +1,18 @@
-/* Structure de la navbar */
+/* Styles généraux */
 body {
   overflow-x: hidden;
   font-family: Sans-Serif;
   margin: 0;
 }
 
+/* Menu Container */
 .menu-container {
   position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  background: #200052; /* Couleur de fond de la navbar */
-  color: #FBFAF9; /* Couleur du texte */
+  background: #200052;
+  color: #cdcdcd;
   padding: 20px;
   z-index: 1;
   -webkit-user-select: none;
@@ -19,6 +20,7 @@ body {
   box-sizing: border-box;
 }
 
+/* Logo */
 .menu-logo {
   line-height: 0;
   margin: 0 20px;
@@ -30,14 +32,15 @@ body {
   flex-shrink: 0;
 }
 
+/* Liens dans le menu */
 .menu-container a {
   text-decoration: none;
-  color: #FBFAF9; /* Couleur du texte */
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
 .menu-container a:hover {
-  color: #00C6A7; /* Couleur au survol */
+  color: #00C6A7;
 }
 
 .menu-container input {
@@ -47,9 +50,10 @@ body {
   margin: 0;
   position: absolute;
   cursor: pointer;
-  opacity: 0; /* Cache la checkbox */
-  z-index: 2; /* Place la checkbox au-dessus du burger */
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
   -webkit-touch-callout: none;
+  user-select: none;
 }
 
 /* Burger menu */
@@ -59,12 +63,13 @@ body {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #FBFAF9; /* Couleur des barres du burger */
+  background: #cdcdcd;
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
 }
 
 .menu-container span:first-child {
@@ -77,8 +82,8 @@ body {
 
 .menu-container input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg) translate(3px, -1px);
-  background: #FBFAF9; /* Couleur des barres du burger quand ouvert */
+  transform: rotate(45deg) translate(3px,-1px);
+  background: #ffffff;
 }
 
 .menu-container input:checked ~ span:nth-child(4) {
@@ -87,64 +92,90 @@ body {
 }
 
 .menu-container input:checked ~ span:nth-child(3) {
-  transform: rotate(-45deg) translate(-5px, 11px);
+  transform: rotate(-45deg) translate(-5px,11px);
 }
 
+/* Liste du menu */
 .menu ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .menu li {
   padding: 10px 0;
   font-size: 22px;
+  text-align: center;
+  color: white; /* Le texte en blanc */
 }
 
-/* Styles pour les petits écrans (mobile) */
-@media only screen and (max-width: 767px) {
+/* Mobile Styles */
+@media only screen and (max-width: 767px) { 
   .menu-container {
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start; /* Alignement des éléments à gauche */
   }
 
+  /* Cacher le logo sur mobile */
   .menu-logo {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    display: none;
   }
 
   .menu-logo img {
     max-height: 30px;
   }
 
+  /* Menu fullscreen */
   .menu {
     position: absolute;
-    box-sizing: border-box;
-    width: 300px;
-    right: -300px;
     top: 0;
-    margin: -20px;
-    padding: 75px 50px 50px;
-    background: #200052; /* Couleur de fond du menu mobile */
-    -webkit-font-smoothing: antialiased;
-    transform-origin: 0% 0%;
-    transform: translateX(0%);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    left: 0;
+    width: 100vw; /* Prend toute la largeur */
+    height: 100vh; /* Prend toute la hauteur */
+    background: #200052;
+    padding-top: 40px; /* Réduit l'espace en haut pour rapprocher le texte */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Remonte le contenu */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.3s ease;
   }
 
+  /* Menu ouvert */
   .menu-container input:checked ~ .menu {
-    transform: translateX(-100%);
+    transform: translateX(0); /* Le menu glisse depuis la droite */
+    opacity: 1;
+  }
+
+  .menu li {
+    padding: 20px 0;
+    font-size: 30px;
+    color: white; /* Assurer que le texte soit en blanc */
+  }
+
+  /* Alignement des items de menu dans le mobile */
+  .menu ul {
+    width: 100%; /* Pour que les éléments prennent toute la largeur */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centrer les éléments verticalement */
   }
 }
 
-/* Styles pour les grands écrans (desktop) */
-@media only screen and (min-width: 768px) {
+/* Desktop Styles */
+@media only screen and (min-width: 768px) { 
   .menu-container {
     width: 100%;
+    flex-direction: row;
+    justify-content: flex-start; /* Alignement des éléments à gauche */
   }
 
   .menu-container a {
-    color: #FBFAF9; /* Couleur du texte */
+    color: #cdcdcd;
   }
 
   .menu-container input {
@@ -158,14 +189,18 @@ body {
 
   .menu {
     position: relative;
-    width: 100%;
+    width: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Aligne les éléments à gauche */
+    align-items: center;
+    width: 100%;
   }
 
   .menu ul {
     display: flex;
     padding: 0;
+    margin: 0;
+    gap: 20px;
   }
 
   .menu li {

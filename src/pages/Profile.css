@@ -1,298 +1,269 @@
-/* Profil Page Styles */
+/* Police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --primary-color: #836EF9; /* Monad Purple */
+  --secondary-color: #FBFAF9; /* Monad Off-White */
+  --background-color: rgba(0, 0, 0, 0.3);
+  --hover-color: rgba(160, 5, 93, 0.2);
+  --text-color: #FBFAF9;
+  --popup-background: #fff;
+  --popup-text: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #1E1E2F;
+  color: var(--text-color);
+  overflow-x: hidden; /* Empêche le scroll horizontal */
+}
+
 .profile-page {
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    color: #FBFAF9; /* Monad Off-White */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Remonte le contenu */
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .profile-container {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 30px;
-    width: 100%;
-    max-width: 800px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid #836EF9; /* Monad Purple */
-    animation: fadeIn 1s ease-out;
+  background: var(--background-color);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--primary-color);
+  animation: fadeIn 1s ease-out;
+  overflow: hidden; /* Empêche tout dépassement */
 }
 
-.profile-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #FBFAF9; /* Monad Off-White */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.profile-info h2,
+/* User Info */
+.profile-info-box h2,
 .collected-items h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #FBFAF9; /* Monad Off-White */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--text-color);
 }
 
-.profile-info p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    color: #FBFAF9; /* Monad Off-White */
+.profile-info-box p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: var(--text-color);
+  word-break: break-word; /* Coupe les longues adresses pour éviter le dépassement */
+  overflow-wrap: break-word;
 }
 
-/* Ajustement pour les éléments collectés */
-.collected-items ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+/* Conteneur des badges avec scroll vertical */
+.items-wrapper {
+  max-height: 250px; /* Hauteur ajustable */
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-.collected-items li {
-    background-color: rgba(131, 110, 249, 0.1);
-    border: 1px solid #836EF9;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 120px;
-}
-
-.collected-items li:hover {
-    transform: translateY(-5px);
-    background-color: rgba(160, 5, 93, 0.2);
-}
-
-.collected-items li h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: #FBFAF9;
-}
-
-.collected-items li p {
-    font-size: 1rem;
-    color: #FBFAF9;
-}
-
-.collected-items .item-image {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-
-/* Styles pour la grille des éléments collectés */
+/* Grille des items */
 .items-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* Par défaut 4 colonnes */
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
 }
-
-@media (max-width: 768px) {
-    /* Sur les écrans plus petits, passer à 2 colonnes */
-    .items-grid {
-        grid-template-columns: repeat(2, 1fr);  /* 2 colonnes pour les petits écrans */
-    }
-}
-
 
 .item-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    height: 150px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  background-color: rgba(131, 110, 249, 0.1);
 }
 
 .item-card:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+  background-color: var(--hover-color);
 }
 
 .item-image {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
 }
 
 .item-card h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-color);
 }
 
-.profile-info-no-user {
-    font-size: 1.2rem;
-    text-align: center;
-    color: #FBFAF9;
-}
-
-/* Animation pour la page */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Modal Overlay */
+/* Popup centré */
 .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-/* Modal Box */
 .popup {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
+  background: var(--popup-background);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .popup h2 {
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--popup-text);
 }
 
 .popup-image {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
 }
 
 .popup p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
+  font-size: 1rem;
+  color: var(--popup-text);
+  margin-bottom: 15px;
 }
 
 .popup button {
-    background: #836EF9;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 .popup button:hover {
-    background: #6b5fd9;
+  background: #6b5fd9;
 }
 
-/* Responsiveness */
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    /* Adaptation de la grille à une colonne pour les petits écrans */
-    .items-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .profile-container {
-        padding: 20px;
-    }
+  .profile-container {
+    padding: 20px;
+    margin-top: -20px; /* Remonte la div sur mobile */
+  }
 
-    .profile-container h1 {
-        font-size: 2rem;
-    }
+  .page-title {
+    font-size: 2rem;
+  }
 
-    .profile-info h2,
-    .collected-items h2 {
-        font-size: 1.5rem;
-    }
+  .profile-info-box h2,
+  .collected-items h2 {
+    font-size: 1.5rem;
+  }
 
-    .profile-info p {
-        font-size: 1rem;
-    }
+  .profile-info-box p {
+    font-size: 1rem;
+    word-break: break-word; /* Empêche le débordement */
+    overflow-wrap: break-word;
+  }
 
-    .collected-items li {
-        height: auto;
-        padding: 10px;
-    }
+  .item-card {
+    padding: 10px;
+  }
 
-    .item-card {
-        height: auto;
-        padding: 15px;
-    }
+  .item-image {
+    width: 60px;
+    height: 60px;
+  }
 
-    .item-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .item-image {
-        width: 40px;
-        height: 40px;
-    }
-
-    .popup {
-        width: 250px;
-    }
+  .popup {
+    width: 250px;
+  }
 }
 
 @media (max-width: 480px) {
-    .profile-container {
-        padding: 15px;
-    }
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr); /* Affiche 2 colonnes max */
+  }
 
-    .profile-container h1 {
-        font-size: 1.8rem;
-    }
+  .profile-container {
+    padding: 15px;
+    margin-top: -30px; /* Remonte encore plus pour éviter l'espace vide */
+  }
 
-    .profile-info h2,
-    .collected-items h2 {
-        font-size: 1.3rem;
-    }
+  .page-title {
+    font-size: 1.8rem;
+  }
 
-    .profile-info p {
-        font-size: 0.9rem;
-    }
+  .profile-info-box h2,
+  .collected-items h2 {
+    font-size: 1.3rem;
+  }
 
-    .collected-items li h3 {
-        font-size: 1.2rem;
-    }
+  .profile-info-box p {
+    font-size: 1rem;
+    word-break: break-word; /* Empêche le débordement du wallet */
+    overflow-wrap: break-word;
+  }
 
-    .item-card h3 {
-        font-size: 1rem;
-    }
+  .items-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
 
-    .item-image {
-        width: 35px;
-        height: 35px;
-    }
+  .popup {
+    width: 220px;
+    padding: 15px;
+  }
 
-    .popup {
-        width: 220px;
-        padding: 15px;
-    }
+  .popup h2 {
+    font-size: 1.3rem;
+  }
 
-    .popup h2 {
-        font-size: 1.3rem;
-    }
-
-    .popup p {
-        font-size: 0.9rem;
-    }
+  .popup p {
+    font-size: 0.9rem;
+  }
 }
