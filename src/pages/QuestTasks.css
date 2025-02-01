@@ -70,7 +70,9 @@
 
 /* Quest Tasks Section */
 .quest-tasks {
-  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 
 .quest-task-container {

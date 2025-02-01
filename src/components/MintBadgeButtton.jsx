@@ -1,7 +1,8 @@
 import React from 'react';
-import { useMintBadge } from '../onchain/useMintBadge';
+import { useMintBadge } from '../onchain/useWriteHooks';
 import { getClaimSignature } from '../api/get';
 import { useAccount } from 'wagmi';
+import './MintBadgeButton.css';
 
 const MintBadgeButton = ({ tokenType }) => {
   const { address, isConnected } = useAccount();
@@ -19,7 +20,7 @@ const MintBadgeButton = ({ tokenType }) => {
   return (
     <div>
       <button className='mint-badge-button' onClick={() => handleMintNFTClic(tokenType)} disabled={isPending}>
-        {isRequestingSignature || isPending ? "Claiming..." : "Claim"}
+        {isRequestingSignature || isPending ? "Claiming..." : "Claim Badge"}
       </button>
       {isSuccess && <p>Transaction successful!</p>}
     </div>

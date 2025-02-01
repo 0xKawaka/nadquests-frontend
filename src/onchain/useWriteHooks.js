@@ -3,7 +3,7 @@ import { BADGES_ADDRESS } from './constants'; // Import contract address
 import { BADGES_ABI } from './abis';
 
 
-export const useMintBadge = () => {
+const useMintBadge = () => {
   const { writeContract, isPending, isSuccess, error } = useWriteContract();
 
   const mintNFT = async (tokenType, key, signature) => {
@@ -21,3 +21,5 @@ export const useMintBadge = () => {
 
   return { mintNFT, isPending, isSuccess, error };
 };
+
+export { useMintBadge };

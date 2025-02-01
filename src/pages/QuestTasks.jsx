@@ -120,7 +120,9 @@ const QuestTasks = () => {
                 </div>
               ))}
             </div>
-            <MintBadgeButton tokenType={quest.id}/>
+            <div className="quest-tasks-claim-button-container">
+              <MintBadgeButton tokenType={quest.id}/>
+            </div>
             {showQuiz && (
               <div className="quiz-modal">
                 <QuizzTask
