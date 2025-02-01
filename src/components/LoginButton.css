@@ -1,3 +1,4 @@
+/* Styles de base des boutons */
 .top-right-buttons {
   position: absolute;
   right: 3vw;
@@ -21,4 +22,27 @@
 
 .connect-button:hover, .logout-button:hover {
   opacity: 0.8;
+}
+
+/* Styles pour le responsive */
+@media only screen and (max-width: 767px) {
+  /* Supprime les styles de boutons par défaut en mobile */
+  .top-right-buttons {
+    position: static; /* Positionnement normal */
+    right: auto; /* Désactive le "right" pour les petits écrans */
+    margin-top: 10px; /* Pour un petit espacement avec le reste du contenu */
+  }
+
+  .connect-button, .logout-button {
+    padding: 8px 16px; /* Ajuste la taille du bouton */
+    border-radius: 8px; /* Arrondir un peu plus sur mobile */
+    font-size: 14px; /* Réduit la taille du texte pour le mobile */
+    margin: 10px 0; /* Marge autour des boutons */
+    background-color: rgba(131, 110, 249, 0.8); /* Change légèrement la couleur du fond */
+    width: 100%; /* Prend toute la largeur disponible */
+  }
+
+  .connect-button:hover, .logout-button:hover {
+    opacity: 1; /* Annule l'effet de survol sur mobile */
+  }
 }
