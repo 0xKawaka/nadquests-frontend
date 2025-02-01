@@ -81,7 +81,6 @@
   margin: 40px 0;
   flex-wrap: wrap;
 }
-
 .feature {
   background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
@@ -90,7 +89,27 @@
   flex: 1 1 250px;
   max-width: 300px;
   text-align: center;
+  position: relative; /* Required for absolute positioning of the square */
   transition: transform 0.3s ease, background 0.3s ease;
+}.feature::before {
+  content: '';
+  position: absolute;
+  top: -70%;  /* Remonter l'image encore plus vers le haut */
+  left: 50%;
+  transform: translateX(-50%) scale(0.5);  /* Réduit l'image à un tiers de sa taille */
+  width: 0;
+  height: 0;
+  background-image: url('https://i.ibb.co/29wzx8N/width-3840-removebg-preview.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  z-index: -1;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.feature:hover::before {
+  width: 100%;  /* L'image prend toute la largeur de la div */
+  height: 100%;  /* L'image prend toute la hauteur de la div */
 }
 
 .feature:hover {
