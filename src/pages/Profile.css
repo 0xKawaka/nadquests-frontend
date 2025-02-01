@@ -1,12 +1,11 @@
 /* Police moderne */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+
 .profile-page {
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Remonte le contenu */
-  min-height: 100vh;
-  padding: 20px;
 }
 
 .profile-container {
@@ -19,7 +18,8 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border: 1px solid var(--primary-color);
   animation: fadeIn 1s ease-out;
-  overflow: hidden; /* Empêche tout dépassement */
+  overflow: hidden;
+  height: 77vh;
 }
 
 .page-title {
@@ -48,11 +48,10 @@
   overflow-wrap: break-word;
 }
 
-/* Conteneur des badges avec scroll vertical */
 .items-wrapper {
-  max-height: 250px; /* Hauteur ajustable */
+  padding-right: 1.3vw;
   overflow-y: auto;
-  padding-right: 10px;
+  max-height: 30vh;
 }
 
 /* Grille des items */
