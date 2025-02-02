@@ -33,26 +33,22 @@ const Navbar = () => {
 
       {/* Menu items */}
       <div className={`menu ${isMenuOpen ? "open" : ""}`}>
-        <ul>
-          <li>
-            <a href="#" onClick={() => handleNavigate("/")}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#quests" onClick={() => handleNavigate("/quests")}>
-              Quests
-            </a>
-          </li>
-          <li>
-            <a href="#profile" onClick={() => handleNavigate("/profile")}>
-              Profile
-            </a>
-          </li>
-          <li>
-            <LoginButton /> {/* Ajouter votre bouton de login ici */}
-          </li>
-        </ul>
+        <div className="menu-item">
+          <a href="#" onClick={() => handleNavigate("/")}>
+            Home
+          </a>
+        </div>
+        <div className="menu-item">
+          <a href="#quests" onClick={() => handleNavigate("/quests")}>
+            Quests
+          </a>
+        </div>
+        <div className="menu-item">
+          <a href="#profile" onClick={() => handleNavigate("/profile")}>
+            Profile
+          </a>
+        </div>
+        <LoginButton />
       </div>
     </nav>
   );
