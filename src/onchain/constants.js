@@ -4,7 +4,7 @@ const RPC_URL = "http://localhost:8545";
 const BADGES_ADDRESS = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
 
 let CHAIN;
-if(import.meta.env.MODE === 'development') {
+if(import.meta.env.MODE === 'test') {
   CHAIN = {
     id: 31337,  // Default Hardhat/Foundry network ID
     name: 'Foundry Devnet',
@@ -25,6 +25,5 @@ if(import.meta.env.MODE === 'development') {
 else {
   CHAIN = mainnet;
 }
-CHAIN = mainnet;
 
 export { CHAIN, RPC_URL, BADGES_ADDRESS };

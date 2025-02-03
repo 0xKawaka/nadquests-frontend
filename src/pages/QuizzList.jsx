@@ -1,35 +1,38 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import quizzes from '../data/quizz.json'; // Importation des quiz
-import './QuizzList.css'; // Utilisation de l'ancien CSS
+import quizzes from '../data/quizz.json';
+import './QuizzList.css';
 
 const QuizzList = () => {
   const navigate = useNavigate();
 
   const handleQuizClick = (title) => {
-    navigate(`/quizz/${encodeURIComponent(title)}`); // Redirige vers la page spécifique du quiz
+    navigate(`/quizz/${encodeURIComponent(title)}`);
   };
 
   return (
-    <div className="quests-page">
-      <div className="page-title">Quizzes</div>
-      <div className="quests-list">
+    <div className="quiz-page">
+      <h1 className="page-title">Quizzes</h1>
+      <div className="quiz-list">
         {quizzes.map((quiz, index) => (
           <div
-            key={`${quiz.title}-${index}`} // Clé unique pour chaque quiz
-            className="quest-item live" // Utilisation de l'ancienne classe pour les quiz
-            onClick={() => handleQuizClick(quiz.title)} // Navigation vers le quiz spécifique
+            key={`${quiz.title}-${index}`}
+            className="quiz-item"
+            onClick={() => handleQuizClick(quiz.title)}
           >
-            <div className="quest-list-image">
+            <div className="quiz-item-image">
               <img
-                src={quiz.image || '/images/default.jpg'} // Image du quiz depuis quizz.json, sinon image par défaut
+                src={quiz.image || '/images/default.jpg'}
                 alt={quiz.title}
-                onError={(e) => { e.target.onerror = null; e.target.src = '/images/default.jpg'; }} // Gestion des erreurs d'image
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/images/default.jpg';
+                }}
               />
             </div>
-            <div className="quest-details">
-              <div className="quests-list-quest-title">{quiz.title}</div>
-              <div>{quiz.description}</div> {/* Affichage de la description du quiz */}
+            <div className="quiz-item-details">
+              <h2 className="quiz-item-title">{quiz.title}</h2>
+              <p className="quiz-item-description">{quiz.description}</p>
             </div>
           </div>
         ))}

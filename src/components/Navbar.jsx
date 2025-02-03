@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Navbar.css"; // Importation du CSS
-import LoginButton from './LoginButton'; // Je suppose que vous avez déjà ce composant pour la gestion du login
+import "./Navbar.css"; // Import CSS
+import LoginButton from "./LoginButton";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -10,17 +10,17 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
   const handleNavigate = (path) => {
     navigate(path);
-    setMenuOpen(false); // Ferme le menu après navigation
+    setMenuOpen(false); // Close the menu after navigation
   };
 
   return (
     <nav className="menu-container">
       {/* Burger menu */}
-      <input 
-        type="checkbox" 
-        aria-label="Toggle menu" 
-        checked={isMenuOpen} 
-        onChange={toggleMenu} 
+      <input
+        type="checkbox"
+        aria-label="Toggle menu"
+        checked={isMenuOpen}
+        onChange={toggleMenu}
       />
       <span></span>
       <span></span>
@@ -33,20 +33,22 @@ const Navbar = () => {
 
       {/* Menu items */}
       <div className={`menu ${isMenuOpen ? "open" : ""}`}>
-        <div className="menu-item">
-          <a href="#" onClick={() => handleNavigate("/")}>
-            Home
-          </a>
-        </div>
-        <div className="menu-item">
-          <a href="#quests" onClick={() => handleNavigate("/quests")}>
-            Quests
-          </a>
-        </div>
-        <div className="menu-item">
-          <a href="#profile" onClick={() => handleNavigate("/profile")}>
-            Profile
-          </a>
+        <div className="menu-items-container">
+          <div className="menu-item">
+            <a href="#" onClick={() => handleNavigate("/")}>
+              Home
+            </a>
+          </div>
+          <div className="menu-item">
+            <a href="#quests" onClick={() => handleNavigate("/quests")}>
+              Quests
+            </a>
+          </div>
+          <div className="menu-item">
+            <a href="#profile" onClick={() => handleNavigate("/profile")}>
+              Profile
+            </a>
+          </div>
         </div>
         <LoginButton />
       </div>

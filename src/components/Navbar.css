@@ -25,7 +25,7 @@
   flex-shrink: 0;
 }
 
-/* Liens dans le menu */
+/* Links */
 .menu-container a {
   text-decoration: none;
   color: #ffffff;
@@ -43,13 +43,13 @@
   margin: 0;
   position: absolute;
   cursor: pointer;
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0; /* Hide the checkbox */
+  z-index: 2; /* Place it over the hamburger */
   -webkit-touch-callout: none;
   user-select: none;
 }
 
-/* Burger menu */
+/* Burger menu spans */
 .menu-container span {
   display: block;
   width: 33px;
@@ -60,8 +60,8 @@
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+              background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
               opacity 0.55s ease;
 }
 
@@ -75,7 +75,7 @@
 
 .menu-container input:checked ~ span {
   opacity: 1;
-  transform: rotate(45deg) translate(3px,-1px);
+  transform: rotate(45deg) translate(3px, -1px);
   background: #ffffff;
 }
 
@@ -85,9 +85,10 @@
 }
 
 .menu-container input:checked ~ span:nth-child(3) {
-  transform: rotate(-45deg) translate(-5px,11px);
+  transform: rotate(-45deg) translate(-5px, 11px);
 }
 
+/* Desktop Menu */
 .menu {
   display: flex;
   flex-direction: row;
@@ -96,20 +97,27 @@
   gap: 30px;
 }
 
+.menu-items-container {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
 .menu-item {
   font-size: 22px;
   text-align: center;
-  color: white; /* Le texte en blanc */
+  color: white;
 }
 
 /* Mobile Styles */
-@media only screen and (max-width: 767px) { 
+@media only screen and (max-width: 768px) {
   .menu-container {
     flex-direction: column;
-    align-items: flex-start; /* Alignement des éléments à gauche */
+    align-items: flex-start; /* Left-align elements */
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
 
-  /* Cacher le logo sur mobile */
+  /* Hide the logo on mobile */
   .menu-logo {
     display: none;
   }
@@ -118,42 +126,37 @@
     max-height: 30px;
   }
 
-  /* Menu fullscreen */
+  /* Fullscreen Mobile Menu */
   .menu {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw; /* Prend toute la largeur */
-    height: 100vh; /* Prend toute la hauteur */
+    right: -100%; /* Start completely off-screen */
+    width: 100%;
+    height: 100vh;
     background: #200052;
-    padding-top: 40px; /* Réduit l'espace en haut pour rapprocher le texte */
+    padding-top: 40px; /* Space at the top */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.3s ease;
+    transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   }
 
-  /* .menu-items-container {
+  .menu-items-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-  } */
+    gap: 25px;
+  }
 
-  /* Menu ouvert */
+  /* Open Mobile Menu */
   .menu-container input:checked ~ .menu {
-    transform: translateX(0); /* Le menu glisse depuis la droite */
-    opacity: 1;
+    right: 0;
   }
 }
 
 /* Desktop Styles */
-@media only screen and (min-width: 768px) { 
+@media only screen and (min-width: 768px) {
   .menu-container {
     width: 100%;
     flex-direction: row;
@@ -168,28 +171,16 @@
     display: none;
   }
 
-  /* Burger menu */
+  /* Hide the burger menu spans on desktop */
   .menu-container span {
     display: none;
   }
 
   .menu {
     position: relative;
-    width: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     width: 100%;
-  }
-
-  .menu ul {
     display: flex;
-    padding: 0;
-    margin: 0;
-    gap: 200px;
-  }
-
-  .menu li {
-    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
   }
 }
