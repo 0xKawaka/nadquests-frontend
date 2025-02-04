@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
 import { questsImages } from '../assets/images/quests/questsImages';
 import './QuestsList.css';
-import { isQuestLive, getTimeLeft } from '../utils/quests';
+import { isQuestLive, getTimeLeftTruncated } from '../utils/quests';
 
 const QuestsList = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const QuestsList = () => {
       <div className='page-title'>Quests</div>
       <div className="quests-list">
         {liveQuests.map((quest) => {
-          const timeLeft = getTimeLeft(quest.endDate);
+          const timeLeft = getTimeLeftTruncated(quest.endDate);
           return (
             <div
               key={quest.title}
@@ -30,7 +30,7 @@ const QuestsList = () => {
               </div>
               <div className="quest-details">
                 <div className='quests-list-quest-title'>{quest.title}</div>
-                <div>{timeLeft && timeLeft + ' left'}</div>
+                <div className='quests-list-quest-timeleft'>{timeLeft && timeLeft + ' left'}</div>
               </div>
             </div>
           );

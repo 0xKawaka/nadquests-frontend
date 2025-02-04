@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Remonte le contenu */
-  
+  padding-top: 5vh;
 }
 
 .profile-container {
@@ -171,9 +171,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .profile-page {
+    padding-top: 0vh;
+  }
+
+
   .profile-container {
-    padding: 20px;
-    margin-top: -20px; /* Remonte la div sur mobile */
     border: none;
     border-radius: 0;
     height: 88vh;
@@ -215,7 +218,6 @@
 
   .profile-container {
     padding: 15px;
-    margin-top: -30px; /* Remonte encore plus pour éviter l'espace vide */
   }
 
   .page-title {

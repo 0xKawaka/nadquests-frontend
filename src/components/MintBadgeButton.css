@@ -1,5 +1,5 @@
 .mint-badge-button {
-  padding: 1vw 2vw;
+  padding: 1vh 2vw;
   border: none;
   border-radius: 5px;
   color: white;
@@ -13,4 +13,17 @@
 
 .mint-badge-button:hover {
   background-color: #5a2dcd;
+}
+@media (max-width: 768px) {
+  .mint-badge-button {
+    font-size: 3.5vw;
+    padding: 2vh 4vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .mint-badge-button {
+    font-size: 3.5vw;
+    padding: 2vh 4vw;
+  }
 }

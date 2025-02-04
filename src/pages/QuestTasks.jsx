@@ -86,9 +86,9 @@ const QuestTasks = () => {
             />
           </div>
           <div className="quest-info">
-            <h1>{quest.title}</h1>
-            <div>Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
-            {endDate && <div>Time Left: {timeLeft}</div>}
+            <div className="quest-tasks-title">{quest.title}</div >
+            <div className="quest-tasks-status">Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
+            {endDate && <div className="quest-tasks-timeleft">Time Left: {timeLeft}</div>}
           </div>
         </div>
         {isConnected ? (

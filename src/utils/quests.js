@@ -40,4 +40,32 @@ const getTimeLeft = (endDate) => {
   return `${timeComponents.join(' ')}`;
 };
 
-export { isQuestLive, getTimeLeft };
+const getTimeLeftTruncated = (endDate) => {
+  if (!endDate) {
+    return null;
+  }
+
+  const now = new Date();
+  const end = new Date(endDate);
+  const diff = end - now;
+
+  if (diff <= 0) {
+    return 'Ended';
+  }
+
+  const seconds = Math.floor(diff / 1000) % 60;
+  const minutes = Math.floor(diff / (1000 * 60)) % 60;
+  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  const timeComponents = [];
+  if (days > 0) return days + ' days'
+  if (hours > 0) return hours + ' hours'
+  if (minutes > 0) return minutes + ' minutes'
+  if (seconds > 0) return seconds + ' seconds'
+  return 'Ended'
+  // if (seconds > 0) timeComponents.push(`${seconds} second${seconds !== 1 ? 's' : ''}`);
+  // return `${timeComponents.join(' ')}`;
+};
+
+export { isQuestLive, getTimeLeft, getTimeLeftTruncated };
