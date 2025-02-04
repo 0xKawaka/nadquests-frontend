@@ -1,3 +1,3 @@
 # nadquests-frontend
-
-Explore the monad ecosystem and collect badges!
+Explore the monad ecosystem through quests and collect rewards!
+https://nadquests.vercel.app/
