@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-// import heroImage from '../images/hero.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,9 +21,6 @@ const Home = () => {
             Explore Quests
           </button>
         </div>
-        {/* <div className="hero-image">
-          <img src={heroImage} alt="NadQuests Illustration" />
-        </div> */}
       </header>
       <section className="features-section">
         <div className="feature">

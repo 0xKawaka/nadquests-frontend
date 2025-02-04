@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
 import tasks from '../data/tasks.json';
 import './QuestTasks.css';
-import { questsImages } from '../images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
+import { questsImages } from '../assets/images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
 import { isQuestLive, getTimeLeft } from '../utils/quests';
 import { useAccount } from 'wagmi';
 import useAuth from '../hooks/useAuth';

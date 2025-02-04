@@ -27,7 +27,7 @@ body {
     rgba(111, 63, 245, 0.8), 
     rgba(131, 110, 249, 0.8)
   ), 
-  url('./images/background.jpeg') center/cover no-repeat;
+  url('./assets/images/background.jpeg') center/cover no-repeat;
 
   font-family: 'Poppins',s sans-serif;
   margin: 0;

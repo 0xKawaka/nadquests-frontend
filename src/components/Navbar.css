@@ -33,7 +33,7 @@
 }
 
 .menu-container a:hover {
-  color: #00C6A7;
+  color: rgba(131, 110, 249, 1);
 }
 
 .menu-container input {
@@ -94,13 +94,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 30px;
 }
 
 .menu-items-container {
   display: flex;
   flex-direction: row;
-  gap: 25px;
+  gap: 50px;
 }
 
 .menu-item {

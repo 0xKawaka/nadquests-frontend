@@ -2,27 +2,31 @@ import React, { useState } from 'react';
 import './Profile.css';
 import CustomConnectButton from '../components/CustomConnectButton';
 import { useAccount } from 'wagmi';
+import badgeImgs from '../assets/images/badge/badges.js';
+
 
 const ProfilePage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const { address, isConnected } = useAccount();
 
+
+
   const collectedItems = [
-    { id: 1, name: 'SALMONAD', description: 'This is item 1', image: '/src/images/badge/1.png', unlocked: true },
-    { id: 2, name: 'CHOG', description: 'This is item 2', image: '/src/images/badge/2.png', unlocked: true },
-    { id: 3, name: 'SNELLY', description: 'This is item 3', image: '/src/images/badge/3.png', unlocked: true },
-    { id: 4, name: 'MOYAKI', description: 'This is item 4', image: '/src/images/badge/4.png', unlocked: true },
-    { id: 5, name: 'SALANDAK', description: 'This is item 5', image: '/src/images/badge/5.png', unlocked: true },
-    { id: 6, name: 'HONK', description: 'This is item 6', image: '/src/images/badge/6.png', unlocked: true },
-    { id: 7, name: 'MOKADEL', description: 'This is item 7', image: '/src/images/badge/7.png', unlocked: true },
-    { id: 8, name: 'LYRAFFE', description: 'This is item 8', image: '/src/images/badge/8.png', unlocked: true },
-    { id: 9, name: 'SPIDERMON', description: 'This is item 9', image: '/src/images/badge/9.png', unlocked: true },
-    { id: 10, name: 'MONTIGER', description: 'This is item 10', image: '/src/images/badge/10.png', unlocked: true },
-    { id: 11, name: 'MOLANDAK', description: 'This is item 11', image: '/src/images/badge/11.png', unlocked: true },
-    { id: 12, name: 'MOUCH', description: 'This is item 12', image: '/src/images/badge/12.png', unlocked: true },
-    { id: 13, name: 'MOXY', description: 'This is item 13', image: '/src/images/badge/13.png', unlocked: true },
-    { id: 14, name: 'BIRBIE', description: 'This is item 14', image: '/src/images/badge/14.png', unlocked: true },
-    { id: 15, name: 'MONCOCK', description: 'This is item 15', image: '/src/images/badge/15.png', unlocked: true },
+    { id: 1, name: 'SALMONAD', description: 'This is item 1', unlocked: true },
+    { id: 2, name: 'CHOG', description: 'This is item 2', unlocked: true },
+    { id: 3, name: 'SNELLY', description: 'This is item 3', unlocked: true },
+    { id: 4, name: 'MOYAKI', description: 'This is item 4', unlocked: true },
+    { id: 5, name: 'SALANDAK', description: 'This is item 5', unlocked: true },
+    { id: 6, name: 'HONK', description: 'This is item 6', unlocked: true },
+    { id: 7, name: 'MOKADEL', description: 'This is item 7', unlocked: true },
+    { id: 8, name: 'LYRAFFE', description: 'This is item 8', unlocked: true },
+    { id: 9, name: 'SPIDERMON', description: 'This is item 9', unlocked: true },
+    { id: 10, name: 'MONTIGER', description: 'This is item 10', unlocked: true },
+    { id: 11, name: 'MOLANDAK', description: 'This is item 11', unlocked: true },
+    { id: 12, name: 'MOUCH', description: 'This is item 12', unlocked: true },
+    { id: 13, name: 'MOXY', description: 'This is item 13', unlocked: true },
+    { id: 14, name: 'BIRBIE', description: 'This is item 14', unlocked: true },
+    { id: 15, name: 'MONCOCK', description: 'This is item 15', unlocked: true },
   ];
 
   return (
@@ -40,7 +44,7 @@ const ProfilePage = () => {
                   {collectedItems.map((item) => (
                     <div key={item.id} className="item-card" onClick={() => setSelectedItem(item)}>
                       <img
-                        src={item.image}
+                        src={badgeImgs[item.id - 1]}
                         alt={item.name}
                         className="item-image"
                         style={{

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import quests from '../data/quests.json';
-import { questsImages } from '../images/quests/questsImages';
+import { questsImages } from '../assets/images/quests/questsImages';
 import './QuestsList.css';
 import { isQuestLive, getTimeLeft } from '../utils/quests';
 
