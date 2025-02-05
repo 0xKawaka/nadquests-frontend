@@ -11,11 +11,12 @@ const MintBadgeButton = ({ tokenType }) => {
   const { mintNFT, isPending, isSuccess, error } = useMintBadge();
   const { hasClaimed, refetchHasClaimed } = useReadClaimedBadge({tokenType, address});
 
+  const twitterId = 'testTwitter';
   async function handleMintNFTClic(tokenType) {
     if(isRequestingSignature || isPending) return;
     setIsRequestingSignature(true);
     let res = await getClaimSignature(address, tokenType);
-    await mintNFT(tokenType, res.key, res.signature);
+    await mintNFT(tokenType, res.key, twitterId, res.signature);
     setIsRequestingSignature(false);
   }
 
@@ -26,6 +27,7 @@ const MintBadgeButton = ({ tokenType }) => {
       </button>}
       {isSuccess && <p>Transaction successful!</p>}
       {hasClaimed && <p>You have already claimed this badge!</p>}
+      {error && <p>{String(error)}</p>}
     </div>
   );
 };
