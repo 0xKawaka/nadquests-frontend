@@ -1,0 +1,98 @@
+/* src/components/SuccessModal.css */
+
+.success-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* ensure it is on top of other elements */
+}
+
+.success-modal-container {
+  position: relative;
+  background: rgba(32, 0, 82, 0.9); /* default dark purple background */
+  padding: 2vh 2vw;
+  border-radius: 1vw;
+  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.5);
+  width: 40vw;
+  max-width: 400px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Additional styling for error state */
+.success-modal-container.error {
+  background: rgba(200, 0, 0, 0.9);
+}
+
+.success-close-button {
+  position: absolute;
+  top: 0vh;
+  right: 1vw;
+  background: transparent;
+  border: none;
+  font-size: 2em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.success-close-button:hover {
+  color: rgba(160, 5, 93, 1);
+}
+
+.success-modal-content {
+  margin-top: 2vh;
+}
+
+.success-quest-image {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 1vw;
+  margin: 1vh auto;
+  display: block;
+}
+
+.success-modal-title {
+  font-size: 2vw;
+  margin-top: 1vh;
+}
+
+/* Error message text styling */
+.success-modal-error-text {
+  font-size: 1.2vw;
+  color: #ffcccc;
+  margin-top: 1vh;
+}
+
+.toggle-error {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .success-modal-container {
+    width: 60vw;
+  }
+  .success-modal-title {
+    font-size: 3vw;
+  }
+  .success-close-button {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-modal-container {
+    width: 80vw;
+  }
+  .success-modal-title {
+    font-size: 4vw;
+  }
+}

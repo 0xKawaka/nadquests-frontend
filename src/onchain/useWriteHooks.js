@@ -4,7 +4,7 @@ import { BADGES_ADDRESS } from './constants'; // Import contract address
 import badgesABI from './badges.json'
 
 const useMintBadge = () => {
-  const { writeContract, isPending, isSuccess, error } = useWriteContract();
+  const { writeContract, isPending, isSuccess, error, data: hash } = useWriteContract();
 
   const mintNFT = async (tokenType, key, twitterId, signature) => {
     try {
@@ -19,7 +19,7 @@ const useMintBadge = () => {
     }
   };
 
-  return { mintNFT, isPending, isSuccess, error };
+  return { mintNFT, isPending, isSuccess, error, hash };
 };
 
 export { useMintBadge };

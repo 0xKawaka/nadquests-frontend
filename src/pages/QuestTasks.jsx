@@ -7,11 +7,14 @@ import tasks from '../data/tasks.json';
 import './QuestTasks.css';
 import { questsImages } from '../assets/images/quests/questsImages'; // Ensure this exports an object mapping quest titles to image paths
 import { isQuestLive, getTimeLeft } from '../utils/quests';
-import { useAccount } from 'wagmi';
+import { useAccount, useWaitForTransactionReceipt } from 'wagmi';
 import useAuth from '../hooks/useAuth';
 import QuizzTask from '../components/QuizzTask';
 import CustomConnectButton from '../components/CustomConnectButton';
 import MintBadgeButton from '../components/MintBadgeButtton';
+import { useMintBadge } from '../onchain/useWriteHooks';
+import MintSuccessModal from '../components/MintSuccessModal';
+import { useReadClaimedBadge } from '../onchain/useReadHooks';
 
 const QuestTasks = () => {
   const { address, connector, isConnected } = useAccount();
@@ -19,11 +22,27 @@ const QuestTasks = () => {
   const navigate = useNavigate();
   const { userX, loading, error, login, logout, ensureAuthenticated } = useAuth();
   
+  // Initiate the minting process
+  const { mintNFT, isPending, isSuccess, error: errorMint, hash } = useMintBadge();
+
+  // Listen for transaction receipt updates using the hash from useMintBadge
+  const { isLoading: isConfirming, isSuccess: isConfirmed, error: errorMintTx } =
+    useWaitForTransactionReceipt({ hash });
+
+  // Local state to control display of the status modal (success/error)
+  const [showStatusModal, setShowStatusModal] = useState(false);
+
+  // Show the modal when the transaction is confirmed or an error is detected
+  useEffect(() => {
+    if (isConfirmed || errorMintTx) {
+      setShowStatusModal(true);
+    }
+  }, [isConfirmed, errorMintTx]);
 
   const quest = quests.find(
     (q) => q.title.toLowerCase() === decodeURIComponent(title).toLowerCase()
   );
-
+  
   if (!quest) {
     return (
       <div className="quest-tasks-page-container">
@@ -37,11 +56,11 @@ const QuestTasks = () => {
       </div>
     );
   }
+  const { hasClaimed } = useReadClaimedBadge({ tokenType: quest.id, address });
 
   const { startDate, endDate } = quest;
   const liveStatus = isQuestLive(startDate, endDate);
   const timeLeft = getTimeLeft(endDate);
-
   const questTasks = tasks[quest.title] || [];
 
   const [completedTasks, setCompletedTasks] = useState({});
@@ -49,23 +68,25 @@ const QuestTasks = () => {
 
   // Handler for task button clicks
   const handleTaskClick = (buttonType, taskId) => {
-    
     if (buttonType.toLowerCase() === 'explore') {
       setCompletedTasks((prev) => ({ ...prev, [taskId]: true }));
     } else if (buttonType.toLowerCase() === 'quiz') {
+      if (completedTasks[taskId]) return;
+      setShowQuiz({ taskId, quizTitle: quest.title });
     } else if (buttonType.toLowerCase() === 'follow') {
       ensureAuthenticated();
-    }
-    if (buttonType.toLowerCase() === 'quiz') {
-      if(completedTasks[taskId])
-        return;
-      setShowQuiz({ taskId, quizTitle: quest.title });
     }
   };
 
   const handleQuizComplete = (taskId) => {
     setCompletedTasks((prev) => ({ ...prev, [taskId]: true }));
     setShowQuiz(null);
+  };
+
+  // Handler to close the success/error modal
+  const handleCloseStatusModal = () => {
+    setShowStatusModal(false);
+    // Optionally, reset the mint hook state here if your hook supports it.
   };
 
   return (
@@ -86,8 +107,10 @@ const QuestTasks = () => {
             />
           </div>
           <div className="quest-info">
-            <div className="quest-tasks-title">{quest.title}</div >
-            <div className="quest-tasks-status">Status: {liveStatus ? 'Live Now' : 'Not Live'}</div>
+            <div className="quest-tasks-title">{quest.title}</div>
+            <div className="quest-tasks-status">
+              Status: {liveStatus ? 'Live Now' : 'Not Live'}
+            </div>
             {endDate && <div className="quest-tasks-timeleft">Time Left: {timeLeft}</div>}
           </div>
         </div>
@@ -95,7 +118,7 @@ const QuestTasks = () => {
           <div className="quest-tasks">
             <div className="quest-task-container">
               {questTasks.map((task, index) => (
-                <div key={"task"+index} className="task-item">
+                <div key={"task" + index} className="task-item">
                   <div className="task-index-and-description">
                     {completedTasks[index] ? (
                       <>
@@ -113,16 +136,31 @@ const QuestTasks = () => {
                   </div>
                   <button
                     className="task-button"
-                    onClick={() => handleTaskClick(task.button, index, task.quizTitle)}
+                    onClick={() => handleTaskClick(task.button, index)}
                   >
                     {task.button}
                   </button>
                 </div>
               ))}
             </div>
-            <div className="quest-tasks-claim-button-container">
-              <MintBadgeButton tokenType={quest.id}/>
-            </div>
+            {!hasClaimed && <div className="quest-tasks-claim-button-container">
+              <MintBadgeButton
+                tokenType={quest.id}
+                mintNFT={mintNFT}
+                isPending={isPending}
+                isSuccess={isSuccess}
+                error={errorMint}
+                isConfirming={isConfirming}
+              />
+            </div>}
+            {showStatusModal && (
+              <MintSuccessModal
+                questTitle={quest.title}
+                questImage={questsImages[quest.title]}
+                onClose={handleCloseStatusModal}
+                error={errorMintTx}
+              />
+            )}
             {showQuiz && (
               <div className="quiz-modal">
                 <QuizzTask
