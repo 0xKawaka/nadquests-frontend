@@ -3,7 +3,7 @@ import badgesABI from './badges.json'
 import { BADGES_ADDRESS } from './constants';
 
 const useReadClaimedBadge = ({tokenType, address}) => {
-  const { data: hasClaimed, refetchHasClaimed } = useReadContract({
+  const { data: hasClaimed, refetch: refetchHasClaimed } = useReadContract({
     address: BADGES_ADDRESS,
     abi: badgesABI,
     functionName: 'hasMinted',

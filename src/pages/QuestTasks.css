@@ -272,3 +272,24 @@
   }
 
 }
+
+/* Claimed Overlay Styles */
+.claimed-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent gray overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.claimed-text {
+  font-size: 3vw;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}

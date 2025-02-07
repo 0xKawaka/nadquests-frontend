@@ -32,12 +32,7 @@ const QuestTasks = () => {
   // Local state to control display of the status modal (success/error)
   const [showStatusModal, setShowStatusModal] = useState(false);
 
-  // Show the modal when the transaction is confirmed or an error is detected
-  useEffect(() => {
-    if (isConfirmed || errorMintTx) {
-      setShowStatusModal(true);
-    }
-  }, [isConfirmed, errorMintTx]);
+
 
   const quest = quests.find(
     (q) => q.title.toLowerCase() === decodeURIComponent(title).toLowerCase()
@@ -56,7 +51,17 @@ const QuestTasks = () => {
       </div>
     );
   }
-  const { hasClaimed } = useReadClaimedBadge({ tokenType: quest.id, address });
+  const { hasClaimed, refetchHasClaimed } = useReadClaimedBadge({ tokenType: quest.id, address });
+
+  // Show the modal when the transaction is confirmed or an error is detected
+  useEffect(() => {
+    if (isConfirmed || errorMintTx) {
+      setShowStatusModal(true);
+    }
+    if(isConfirmed) {
+      refetchHasClaimed();
+    }
+  }, [isConfirmed, errorMintTx]);
 
   const { startDate, endDate } = quest;
   const liveStatus = isQuestLive(startDate, endDate);
@@ -88,7 +93,7 @@ const QuestTasks = () => {
     setShowStatusModal(false);
     // Optionally, reset the mint hook state here if your hook supports it.
   };
-
+  
   return (
     <div className="quest-tasks-page-container">
       <div className="quest-tasks-page">
@@ -115,7 +120,12 @@ const QuestTasks = () => {
           </div>
         </div>
         {isConnected ? (
-          <div className="quest-tasks">
+          <div className="quest-tasks" style={{ position: 'relative' }}>
+            {hasClaimed && (
+              <div className="claimed-overlay">
+                <span className="claimed-text">Claimed</span>
+              </div>
+            )}
             <div className="quest-task-container">
               {questTasks.map((task, index) => (
                 <div key={"task" + index} className="task-item">
@@ -143,16 +153,18 @@ const QuestTasks = () => {
                 </div>
               ))}
             </div>
-            {!hasClaimed && <div className="quest-tasks-claim-button-container">
-              <MintBadgeButton
-                tokenType={quest.id}
-                mintNFT={mintNFT}
-                isPending={isPending}
-                isSuccess={isSuccess}
-                error={errorMint}
-                isConfirming={isConfirming}
-              />
-            </div>}
+            {!hasClaimed && (
+              <div className="quest-tasks-claim-button-container">
+                <MintBadgeButton
+                  tokenType={quest.id}
+                  mintNFT={mintNFT}
+                  isPending={isPending}
+                  isSuccess={isSuccess}
+                  error={errorMint}
+                  isConfirming={isConfirming}
+                />
+              </div>
+            )}
             {showStatusModal && (
               <MintSuccessModal
                 questTitle={quest.title}
